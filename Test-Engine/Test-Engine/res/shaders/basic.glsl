@@ -14,5 +14,5 @@ void main() {
 }
 
 //#UNIFORMS
-1
+0
 //#END
