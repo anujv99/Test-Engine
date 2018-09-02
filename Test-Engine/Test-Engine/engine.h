@@ -2,6 +2,7 @@
 
 #include "display.h"
 #include "input.h"
+#include "shadermanager.h"
 
 class Engine {
 public:

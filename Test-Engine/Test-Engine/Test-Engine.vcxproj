@@ -152,12 +152,14 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="shadermanager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="shadermanager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl" />

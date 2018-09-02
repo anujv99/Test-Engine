@@ -16,6 +16,8 @@ int Engine::init() {
 
 	mInput.setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
 
+	ShaderManager::addShader(SHADER_BASIC, "basic");
+
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
 }
@@ -33,5 +35,6 @@ void Engine::run() {
 }
 
 void Engine::destroy() {
+	ShaderManager::cleanUP();
 	delete(mDisplay);
 }

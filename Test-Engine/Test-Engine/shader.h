@@ -8,7 +8,7 @@
 class Shader {
 public:
 	Shader(std::string pFileName);
-	~Shader();
+	void cleanUP();
 private:
 	unsigned int mProgramID, mVertexShaderID, mFragmentShaderID;
 	bool mShaderStatus = true;

@@ -14,8 +14,16 @@ Shader::Shader(std::string pFileName) {
 	}
 }
 
-Shader::~Shader() {
+void Shader::cleanUP() {
+	glDetachShader(mProgramID, mVertexShaderID);
+	glDetachShader(mProgramID, mFragmentShaderID);
+	glDeleteShader(mVertexShaderID);
+	glDeleteShader(mFragmentShaderID);
+	glDeleteProgram(mProgramID);
+	printf("SHADER::Deleted successfully ( Program ID = %d )\n", mProgramID);
 }
+
+
 
 void Shader::createShaders(std::ifstream * pInFile) {
 	GLenum tShaderType = 0;
@@ -51,6 +59,7 @@ void Shader::createShaders(std::ifstream * pInFile) {
 				tIsShader = false;
 			} else if ((tLine.find("END")) != std::string::npos) {
 				tIsShader = false;
+				break;
 			}
 		}
 		tShaderStirng += tLine + "\n";
