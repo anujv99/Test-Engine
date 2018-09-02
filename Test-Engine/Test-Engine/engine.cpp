@@ -7,16 +7,16 @@ int Engine::init() {
 	mDisplay = new Display(WINDOW_WIDTH, WINDOW_HEIGHT);
 	bool tDisplayStatus = mDisplay->getStatus();
 	if (!tDisplayStatus) {
-		std::cout << "ENGINE::Failed to create display" << std::endl;
+		printf("ENGINE::Failed to create display\n");
 		return -1;
 	} else {
-		std::cout << "DISPLAY::GLFW window created successfuly." << std::endl;
-		std::cout << "DISPLAY::OpenGL Version " << glGetString(GL_VERSION) << std::endl;
+		printf("DISPLAY::GLFW window created successfuly\n");
+		printf("DISPLAY::OpenGL Version %s\n", glGetString(GL_VERSION));
 	}
 
 	mInput.setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	std::cout << "ENGINE::Initialized successfully!" << std::endl;
+	printf("ENGINE::Initialized successfully!\n");
 	return 0;
 }
 

@@ -3,7 +3,7 @@
 Display::Display(unsigned int pWidth, unsigned int pHeight) {
 	if (!glfwInit()) {
 		mStatus = false;
-		std::cout << "DISPLAY::Failed to initialize GLFW!" << std::endl;
+		printf("DISPLAY::Failed to initialize GLFW!\n");
 		return;
 	}
 
@@ -14,14 +14,14 @@ Display::Display(unsigned int pWidth, unsigned int pHeight) {
 
 	mWindow = glfwCreateWindow(pWidth, pHeight, "Test Window", nullptr, nullptr);
 	if (mWindow == nullptr) {
-		std::cout << "DISPLAY::Failed to create GLFW window" << std::endl;
+		printf("DISPLAY::Failed to create GLFW window\n");
 		mStatus = false;
 		return;
 	}
 	glfwMakeContextCurrent(mWindow);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		std::cout << "Failed to initialize GLAD" << std::endl;
+		printf("Failed to initialize GLAD\n");
 		mStatus = false;
 		return;
 	}
