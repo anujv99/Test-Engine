@@ -2,6 +2,8 @@
 
 #define PAUSE system("PAUSE")
 
+#include "shader.h"
+
 int main() {
 	Engine engine;
 	int tStatus = engine.init();
@@ -10,9 +12,11 @@ int main() {
 		return tStatus;
 	}
 
+	Shader shader("basic");
+
 	engine.run();
 	engine.destroy();
-
+	
 	PAUSE;
 	return 0;
 }
