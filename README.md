@@ -3,7 +3,7 @@ Nothing too great
 I'm trying to learn game engine development, by creating a small 3d game engine.
 I don't want to add a lot of things because it's my first engine.
 Target :-
-    Nice flexible render engine\n
+    Nice flexible render engine
     a way to manage shader(I always mess this up)
     collision detection (two phase)
     skeletal animation
