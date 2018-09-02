@@ -2,9 +2,10 @@
 
 std::map<SHADER_TYPES, Shader> ShaderManager::mAllShaders;
 
-void ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pShaderName) {
+const Shader * ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pShaderName) {
 	Shader tShader(pShaderName);
 	mAllShaders.insert(SHADER_PAIR(pShaderType, tShader));
+	return getShader(pShaderType);
 }
 
 const Shader * ShaderManager::getShader(SHADER_TYPES pShaderType) {

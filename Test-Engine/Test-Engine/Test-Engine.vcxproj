@@ -147,19 +147,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c" />
+    <ClCompile Include="basicloader.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="shadermanager.cpp" />
+    <ClCompile Include="vertexbuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="basicloader.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="shadermanager.h" />
+    <ClInclude Include="vertexbuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl" />

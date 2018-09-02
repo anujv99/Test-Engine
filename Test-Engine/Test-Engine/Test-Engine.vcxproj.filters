@@ -39,6 +39,12 @@
     <ClCompile Include="shadermanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="basicloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="display.h">
@@ -54,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shadermanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basicloader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vertexbuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

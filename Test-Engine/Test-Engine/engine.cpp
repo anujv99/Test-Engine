@@ -16,7 +16,7 @@ int Engine::init() {
 
 	mInput.setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	ShaderManager::addShader(SHADER_BASIC, "basic");
+	auto tShader = ShaderManager::addShader(SHADER_BASIC, "basic");
 
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
