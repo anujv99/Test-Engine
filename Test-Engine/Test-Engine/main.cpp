@@ -1,5 +1,7 @@
 #include "engine.h"
 
+#include "basicloader.h"
+
 #define PAUSE system("PAUSE")
 
 int main() {
@@ -9,6 +11,8 @@ int main() {
 		PAUSE;
 		return tStatus;
 	}
+
+	auto rip = BasicLoader::loadModel("tree1");
 
 	engine.run();
 	engine.destroy();

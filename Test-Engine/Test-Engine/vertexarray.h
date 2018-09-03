@@ -1,7 +1,7 @@
 #pragma once
 
 #include "vertexbuffer.h"
-
+#include "indexbuffer.h"
 class VertexArray {
 public:
 	VertexArray();
