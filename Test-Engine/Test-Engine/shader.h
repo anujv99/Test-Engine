@@ -12,6 +12,7 @@ public:
 public:
 	inline void bind() const { glUseProgram(mProgramID); }
 	inline void unBind() const { glUseProgram(0); }
+	inline bool getStatus() const { return mShaderStatus; }
 private:
 	unsigned int mProgramID, mVertexShaderID, mFragmentShaderID;
 	bool mShaderStatus = true;

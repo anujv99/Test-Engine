@@ -99,6 +99,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
+      <AssemblerOutput>NoListing</AssemblerOutput>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -110,6 +112,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
+      <AssemblerOutput>NoListing</AssemblerOutput>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -123,6 +127,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
+      <AssemblerOutput>NoListing</AssemblerOutput>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -138,6 +144,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
+      <AssemblerOutput>NoListing</AssemblerOutput>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -150,19 +158,23 @@
     <ClCompile Include="basicloader.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="shadermanager.cpp" />
+    <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="vertexbuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicloader.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="shadermanager.h" />
+    <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertexbuffer.h" />
   </ItemGroup>
   <ItemGroup>
