@@ -11,8 +11,8 @@ enum SHADER_TYPES {
 
 class ShaderManager {
 public:
-	static const Shader * addShader(SHADER_TYPES pShaderType, std::string pShaderName);
-	static const Shader * getShader(SHADER_TYPES pShaderType);
+	static Shader * addShader(SHADER_TYPES pShaderType, std::string pShaderName);
+	static Shader * getShader(SHADER_TYPES pShaderType);
 	static void cleanUP();
 private:
 	static std::map<SHADER_TYPES, Shader> mAllShaders;

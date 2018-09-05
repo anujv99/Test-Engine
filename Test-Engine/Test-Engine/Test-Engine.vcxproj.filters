@@ -16,69 +16,132 @@
     <Filter Include="Resource Files\shaders">
       <UniqueIdentifier>{7b5ab6bd-d1f6-41ec-8945-37b623b5db4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\renderer">
+      <UniqueIdentifier>{7972aa3f-8164-4550-ab88-aaffd127fbe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{5abdb5e4-6dc6-4efb-9a70-0976000335f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\essentials">
+      <UniqueIdentifier>{3219485d-6e10-46c1-9d0e-764c4089cb2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\resourceManager">
+      <UniqueIdentifier>{719caadc-f318-4a34-908b-50822c380484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{94b2de08-cace-4b9a-b426-e73576fae3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\essentails">
+      <UniqueIdentifier>{a60a0351-20c8-49f2-89b9-ec94c9b60449}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\renderer">
+      <UniqueIdentifier>{c8ba5a2a-edef-42a6-98d7-8208d58588d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\resourceManager">
+      <UniqueIdentifier>{79a01e53-37b3-4538-9ec1-e36c76f21ce2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="display.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="input.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="shadermanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="basicloader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vertexbuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vertexarray.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="basicmodelrenderer.cpp">
+      <Filter>Source Files\renderer</Filter>
     </ClCompile>
     <ClCompile Include="indexbuffer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="masterrenderer.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="shadermanager.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexarray.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexbuffer.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Source Files\essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="display.cpp">
+      <Filter>Source Files\essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="cameramaster.cpp">
+      <Filter>Source Files\essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="basicloader.cpp">
+      <Filter>Source Files\resourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="assetmanager.cpp">
+      <Filter>Source Files\resourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files\resourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="scenemanager.cpp">
+      <Filter>Source Files\resourceManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="display.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shadermanager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="assetmanager.h">
+      <Filter>Header Files\resourceManager</Filter>
     </ClInclude>
     <ClInclude Include="basicloader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\resourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="vertexbuffer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files\resourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="vertexarray.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="scenemanager.h">
+      <Filter>Header Files\resourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="basicmodelrenderer.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="cameramaster.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="display.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="indexbuffer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="masterrenderer.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="shadermanager.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="vertexarray.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="vertexbuffer.h">
+      <Filter>Header Files\renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

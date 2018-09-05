@@ -155,23 +155,36 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c" />
+    <ClCompile Include="assetmanager.cpp" />
     <ClCompile Include="basicloader.cpp" />
+    <ClCompile Include="basicmodelrenderer.cpp" />
+    <ClCompile Include="cameramaster.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="masterrenderer.cpp" />
+    <ClCompile Include="scene.cpp" />
+    <ClCompile Include="scenemanager.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="shadermanager.cpp" />
     <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="vertexbuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assetmanager.h" />
     <ClInclude Include="basicloader.h" />
+    <ClInclude Include="basicmodelrenderer.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="cameramaster.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="masterrenderer.h" />
+    <ClInclude Include="scene.h" />
+    <ClInclude Include="scenemanager.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="shadermanager.h" />
     <ClInclude Include="vertexarray.h" />

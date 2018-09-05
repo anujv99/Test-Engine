@@ -1,8 +1,8 @@
 #include "basicloader.h"
 
-std::vector<VertexArray> BasicLoader::mVaos;
-std::vector<VertexBuffer> BasicLoader::mVbos;
-std::vector<IndexBuffer> BasicLoader::mIbos;
+std::list<VertexArray> BasicLoader::mVaos;
+std::list<VertexBuffer> BasicLoader::mVbos;
+std::list<IndexBuffer> BasicLoader::mIbos;
 
 Model BasicLoader::loadModel(std::string pFilePath) {
 	std::ifstream tInFile("res/models/" + pFilePath + ".toxic", std::ios::in | std::ios::binary);
@@ -40,20 +40,38 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 
 	tVbo = createVBO(tNormals, tNormalsSize);
 	tVbo->bind();
-	tVao->addVertexBuffer(0, 3);
+	tVao->addVertexBuffer(1, 3);
 	tVbo->unBind();
 
 	tVbo = createVBO(tTexCoords, tTexCoordsSize);
 	tVbo->bind();
-	tVao->addVertexBuffer(0, 2);
+	tVao->addVertexBuffer(2, 2);
 	tVbo->unBind();
+
 
 	auto tIbo = createIBO(tIndices, tIndicesSize);
 	tIbo->bind();
 
 	tVao->unBind();
 
+	delete[] tVertices;
+	delete[] tNormals;
+	delete[] tTexCoords;
+	delete[] tIndices;
+
 	return Model(tVao, tIbo->getIndicesCount());
+}
+
+void BasicLoader::cleanUP() {
+	for (auto &sBuffer : mIbos) {
+		sBuffer.cleanUP();
+	}
+	for (auto &sBuffer : mVbos) {
+		sBuffer.cleanUP();
+	}
+	for (auto &sVAO : mVaos) {
+		sVAO.cleanUP();
+	}
 }
 
 int BasicLoader::readINT(std::ifstream * pInFile) {
@@ -69,17 +87,17 @@ void BasicLoader::readBuffer(std::ifstream * pInFile, void * pStream, unsigned i
 VertexArray * BasicLoader::createVAO() {
 	auto tVao = VertexArray();
 	mVaos.push_back(tVao);
-	return &mVaos[mVaos.size() - 1];
+	return &mVaos.back();
 }
 
 VertexBuffer * BasicLoader::createVBO(const float * pData, unsigned int pSize) {
 	auto tVbo = VertexBuffer(pData, pSize);
 	mVbos.push_back(tVbo);
-	return &mVbos[mVbos.size() - 1];
+	return &mVbos.back();
 }
 
 IndexBuffer * BasicLoader::createIBO(const int * pData, unsigned int pSize) {
 	auto tIbo = IndexBuffer(pData, pSize);
 	mIbos.push_back(tIbo);
-	return &mIbos[mIbos.size() - 1];
+	return &mIbos.back();
 }

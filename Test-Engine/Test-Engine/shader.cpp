@@ -23,8 +23,6 @@ void Shader::cleanUP() {
 	printf("SHADER::Deleted successfully ( Program ID = %d )\n", mProgramID);
 }
 
-
-
 void Shader::createShaders(std::ifstream * pInFile) {
 	GLenum tShaderType = 0;
 	std::string tLine;
@@ -67,22 +65,34 @@ void Shader::createShaders(std::ifstream * pInFile) {
 }
 
 void Shader::createShaderProgram() {
-	 mProgramID = glCreateProgram();
-	 glAttachShader(mProgramID, mVertexShaderID);
-	 glAttachShader(mProgramID, mFragmentShaderID);
-	 glLinkProgram(mProgramID);
+	mProgramID = glCreateProgram();
+	glAttachShader(mProgramID, mVertexShaderID);
+	glAttachShader(mProgramID, mFragmentShaderID);
+	glLinkProgram(mProgramID);
 
-	 int tSuccess;
-	 char tInfoLog[512];
+	int tSuccess;
+	char tInfoLog[512];
 
-	 glGetProgramiv(mProgramID, GL_LINK_STATUS, &tSuccess);
-	 if (!tSuccess) {
-		 glGetProgramInfoLog(mProgramID, 512, NULL, tInfoLog);
-		 printf("SHADER::Unable to create shader program : %s\n", tInfoLog);
-		 mShaderStatus = false;
-	 } else {
-		 printf("SHADER::Created successfully ( Program ID = %d )\n", mProgramID);
-	 }
+	glGetProgramiv(mProgramID, GL_LINK_STATUS, &tSuccess);
+	if (!tSuccess) {
+		glGetProgramInfoLog(mProgramID, 512, NULL, tInfoLog);
+		printf("SHADER::Unable to create shader program : %s\n", tInfoLog);
+		mShaderStatus = false;
+	} else {
+		printf("SHADER::Created successfully ( Program ID = %d )\n", mProgramID);
+	}
+}
+
+void Shader::loadUniforms() {
+	bind();
+	mUniformLocations[UNIFORM_MATRIX_MODEL] = getUniformLocation("model");
+	mUniformLocations[UNIFORM_MATRIX_PROJECTION] = getUniformLocation("projection");
+	mUniformLocations[UNIFORM_MATRIX_VIEW] = getUniformLocation("view");
+	unBind();
+}
+
+void Shader::loadStoredUniform(glm::mat4 pValue, UNIFORM_LOCATIONS pLocation) {
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE, glm::value_ptr(pValue));
 }
 
 void Shader::compileShader(std::string pShaderString, GLenum pShaderType) {

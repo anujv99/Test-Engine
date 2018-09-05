@@ -2,7 +2,7 @@
 
 std::map<SHADER_TYPES, Shader> ShaderManager::mAllShaders;
 
-const Shader * ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pShaderName) {
+Shader * ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pShaderName) {
 	Shader tShader(pShaderName);
 	if (tShader.getStatus() != true) {
 		printf("SHADER_MANAGER::Unable to create shader %s\n", pShaderName.c_str());
@@ -12,7 +12,7 @@ const Shader * ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pS
 	return getShader(pShaderType);
 }
 
-const Shader * ShaderManager::getShader(SHADER_TYPES pShaderType) {
+Shader * ShaderManager::getShader(SHADER_TYPES pShaderType) {
 	Shader * temp;
 	temp = &mAllShaders.at(pShaderType);
 	return temp;

@@ -18,15 +18,21 @@ public:
 	inline double getMouseYPos() const { return mMouseYPos; }
 	inline double getMouseXOffset() const { return mMouseXOffset; }
 	inline double getMouseYOffset() const { return mMouseYOffset; }
+	
+	inline double getDeltaTime() const { return mDeltaTime; }
 private:
 	double mMouseXPos;
 	double mMouseYPos;
 	bool mIsMousePosChanged;
 	double mMouseXOffset;
 	double mMouseYOffset;
+	bool mIsMouseEnabled = true;
 private:
 	double mLastMouseXPos;
 	double mLastMouseYPos;
+private:
+	double mLastFrameTime;
+	double mDeltaTime;
 private:
 	GLFWwindow * mWindow;
 	bool mKeyboardKeys[MAX_KEYS];

@@ -12,8 +12,6 @@ int main() {
 		return tStatus;
 	}
 
-	auto rip = BasicLoader::loadModel("tree1");
-
 	engine.run();
 	engine.destroy();
 	

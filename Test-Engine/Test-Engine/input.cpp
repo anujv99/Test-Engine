@@ -14,9 +14,14 @@ void Input::setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeigh
 	mMouseYOffset = 0;
 	glfwSetWindowUserPointer(mWindow, (void*)(this));
 	glfwSetCursorPosCallback(mWindow, cursor_pos_callback);
+
+	mDeltaTime = 0.0;
+	mLastFrameTime = 0.0;
 }
 
 void Input::calculateIO() {
+	mDeltaTime = glfwGetTime() - mLastFrameTime;
+	mLastFrameTime = glfwGetTime();
 	checkWindowExitStatus();
 	calculateMouseData();
 }
@@ -45,6 +50,16 @@ void Input::calculateMouseData() {
 	}
 	mLastMouseXPos = mMouseXPos;
 	mLastMouseYPos = mMouseYPos;
+
+	if (isKeyPressed(GLFW_KEY_F2)) {
+		if (mIsMouseEnabled)
+			glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		else
+			glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+		mIsMouseEnabled = !mIsMouseEnabled;
+	}
+
 }
 
 void Input::checkWindowExitStatus() {

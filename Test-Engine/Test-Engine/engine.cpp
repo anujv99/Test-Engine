@@ -14,7 +14,12 @@ int Engine::init() {
 		printf("DISPLAY::OpenGL Version %s\n", glGetString(GL_VERSION));
 	}
 
+	//Use GL functions after this line
+
 	mInput.setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
+	mRenderer = MasterRenderer(WINDOW_WIDTH, WINDOW_HEIGHT);
+	mScenes = new SceneManager(&mAssetManager);
+	mCamera = CameraMaster(&mInput);
 
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
@@ -24,8 +29,9 @@ void Engine::run() {
 	//Main Game Loop
 	while (!mDisplay->shouldClose()) {
 		mInput.calculateIO();
+		mCamera.updateCamera();
 
-
+		mRenderer.draw(mScenes->getActiveScene(), mCamera.getViewMatrix());
 
 		mInput.updateKeys();
 		mDisplay->updateDisplay();
@@ -33,6 +39,8 @@ void Engine::run() {
 }
 
 void Engine::destroy() {
+	BasicLoader::cleanUP();
 	ShaderManager::cleanUP();
+	delete(mScenes);
 	delete(mDisplay);
 }

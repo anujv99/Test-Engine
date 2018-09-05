@@ -10,4 +10,3 @@ VertexBuffer::VertexBuffer(const void * pData, unsigned int pSize) {
 void VertexBuffer::cleanUP() {
 	glDeleteBuffers(1, &mVertexBufferID);
 }
-
