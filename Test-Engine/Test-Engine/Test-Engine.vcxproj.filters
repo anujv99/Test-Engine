@@ -46,6 +46,12 @@
     <Filter Include="Source Files\opengl_objects">
       <UniqueIdentifier>{f14a2431-40b7-498f-8ebe-9fc94cafa233}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\generators">
+      <UniqueIdentifier>{3d811cd8-faaa-4891-a56b-c88751030654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generators">
+      <UniqueIdentifier>{da0282c9-10a5-4a44-b8b5-b5d626c21853}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -105,6 +111,15 @@
     <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="openglresources.cpp">
+      <Filter>Source Files\opengl_objects</Filter>
+    </ClCompile>
+    <ClCompile Include="terraingenerator.cpp">
+      <Filter>Source Files\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="terrainrenderer.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -161,9 +176,21 @@
     <ClInclude Include="texture.h">
       <Filter>Header Files\opengl_objects</Filter>
     </ClInclude>
+    <ClInclude Include="openglresources.h">
+      <Filter>Header Files\opengl_objects</Filter>
+    </ClInclude>
+    <ClInclude Include="terraingenerator.h">
+      <Filter>Header Files\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="terrainrenderer.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="res\shaders\terrain.glsl">
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>

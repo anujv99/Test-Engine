@@ -3,6 +3,7 @@
 #include "basicmodelrenderer.h"
 #include "scenemanager.h"
 #include "shadermanager.h"
+#include "terrainrenderer.h"
 
 class MasterRenderer {
 public:
@@ -14,5 +15,6 @@ private:
 private:
 	glm::mat4 mProjection;
 	BasicModelRenderer mBasicRenderer;
+	TerrainRenderer mTerrainRenderer;
 };
 

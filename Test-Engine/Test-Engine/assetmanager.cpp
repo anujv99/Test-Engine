@@ -9,5 +9,11 @@ Model * AssetManager::loadModel(std::string path) {
 		return nullptr;
 	}
 	mModels.push_back(tModel);
-	return &mModels[mModels.size() - 1];
+	return &mModels.back();
+}
+
+Terrain * AssetManager::generateTerrain(unsigned int pVertexCount, unsigned int pSize) {
+	auto tTerrain = TerrainGenerator::createTerrain(pVertexCount, pSize);
+	mTerrains.push_back(tTerrain);
+	return &mTerrains.back();
 }

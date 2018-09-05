@@ -39,7 +39,7 @@ void Engine::run() {
 }
 
 void Engine::destroy() {
-	BasicLoader::cleanUP();
+	OpenGLResources::cleanUP();
 	ShaderManager::cleanUP();
 	delete(mScenes);
 	delete(mDisplay);

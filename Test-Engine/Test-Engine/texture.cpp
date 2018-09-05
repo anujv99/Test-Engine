@@ -22,6 +22,7 @@ bool Texture::loadTexture(std::string pImageName) {
 		printf("TEXTURE::Failed to load texture : %s\n", pImageName.c_str());
 		return false;
 	}
+	printf("T\n");
 	stbi_image_free(data);
 	return true;
 }
@@ -34,11 +35,6 @@ void Texture::bind(unsigned int pTextureUnit) const {
 void Texture::setAnisotropicFiltering() {
 	bind();
 	float tAmount = 4;
-	float temp = 0;
-	glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &temp);
-	if (temp < tAmount)
-		tAmount = temp;
-
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, tAmount);
 	unBind();
 }

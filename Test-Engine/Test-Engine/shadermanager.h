@@ -4,7 +4,8 @@
 #include "shader.h"
 
 enum SHADER_TYPES {
-	SHADER_BASIC
+	SHADER_BASIC,
+	SHADER_TERRAIN
 };
 
 #define SHADER_PAIR std::pair<SHADER_TYPES, Shader>

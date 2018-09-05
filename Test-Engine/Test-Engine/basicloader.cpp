@@ -1,10 +1,5 @@
 #include "basicloader.h"
 
-std::list<VertexArray> BasicLoader::mVaos;
-std::list<VertexBuffer> BasicLoader::mVbos;
-std::list<IndexBuffer> BasicLoader::mIbos;
-std::list<Texture> BasicLoader::mTextures;
-
 Model BasicLoader::loadModel(std::string pFilePath) {
 	std::ifstream tInFile("res/models/" + pFilePath + ".toxic", std::ios::in | std::ios::binary);
 	if (!tInFile) {
@@ -31,26 +26,25 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 
 	tInFile.close();
 
-	auto tVao = createVAO();
+	auto tVao = OpenGLResources::createVAO();
 	tVao->bind();
 
-	auto tVbo = createVBO(tVertices, tVerticesSize);
+	auto tVbo = OpenGLResources::createVBO(tVertices, tVerticesSize);
 	tVbo->bind();
 	tVao->addVertexBuffer(0, 3);
 	tVbo->unBind();
 
-	tVbo = createVBO(tNormals, tNormalsSize);
+	tVbo = OpenGLResources::createVBO(tNormals, tNormalsSize);
 	tVbo->bind();
 	tVao->addVertexBuffer(1, 3);
 	tVbo->unBind();
 
-	tVbo = createVBO(tTexCoords, tTexCoordsSize);
+	tVbo = OpenGLResources::createVBO(tTexCoords, tTexCoordsSize);
 	tVbo->bind();
 	tVao->addVertexBuffer(2, 2);
 	tVbo->unBind();
 
-
-	auto tIbo = createIBO(tIndices, tIndicesSize);
+	auto tIbo = OpenGLResources::createIBO(tIndices, tIndicesSize);
 	tIbo->bind();
 
 	tVao->unBind();
@@ -61,7 +55,7 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 	delete[] tIndices;
 
 	auto tFinalModel =  Model(tVao, tIbo->getIndicesCount());
-	auto tTex = createTexture();
+	auto tTex = OpenGLResources::createTexture();
 	bool status = tTex->loadTexture("res/models/" + pFilePath + ".jpg");
 	if (!status) {
 		printf("LOADER::Texture for model : %s : not found\n", pFilePath.c_str());
@@ -70,22 +64,9 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 		tFinalModel.mDiffuseTex = tTex;
 	}
 
-	return tFinalModel;
-}
+	printf("LOADER::Model loader : %s\n", pFilePath.c_str());
 
-void BasicLoader::cleanUP() {
-	for (auto &sBuffer : mIbos) {
-		sBuffer.cleanUP();
-	}
-	for (auto &sBuffer : mVbos) {
-		sBuffer.cleanUP();
-	}
-	for (auto &sVAO : mVaos) {
-		sVAO.cleanUP();
-	}
-	for (auto &sTex : mTextures) {
-		sTex.cleanUP();
-	}
+	return tFinalModel;
 }
 
 int BasicLoader::readINT(std::ifstream * pInFile) {
@@ -98,26 +79,3 @@ void BasicLoader::readBuffer(std::ifstream * pInFile, void * pStream, unsigned i
 	pInFile->read((char*)pStream, pBufferSize);
 }
 
-VertexArray * BasicLoader::createVAO() {
-	auto tVao = VertexArray();
-	mVaos.push_back(tVao);
-	return &mVaos.back();
-}
-
-VertexBuffer * BasicLoader::createVBO(const float * pData, unsigned int pSize) {
-	auto tVbo = VertexBuffer(pData, pSize);
-	mVbos.push_back(tVbo);
-	return &mVbos.back();
-}
-
-IndexBuffer * BasicLoader::createIBO(const int * pData, unsigned int pSize) {
-	auto tIbo = IndexBuffer(pData, pSize);
-	mIbos.push_back(tIbo);
-	return &mIbos.back();
-}
-
-Texture * BasicLoader::createTexture() {
-	auto tTexture = Texture();
-	mTextures.push_back(tTexture);
-	return &mTextures.back();
-}
