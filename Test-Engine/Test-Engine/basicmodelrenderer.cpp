@@ -13,6 +13,8 @@ void BasicModelRenderer::draw(std::vector<Model*> * pModels, const glm::mat4 &pV
 		auto tModelMat = createModelMatrix(pModel->mPosition, pModel->mRotation, pModel->mScale);
 		pShader->loadStoredUniform(tModelMat, UNIFORM_MATRIX_MODEL);
 
+		pModel->mDiffuseTex->bind();
+
 		pModel->mVAO->bind();
 		enableVertexAttribArray(3);
 		drawElements(pModel->mVertexCount);

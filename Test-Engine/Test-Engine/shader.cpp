@@ -80,6 +80,7 @@ void Shader::createShaderProgram() {
 		mShaderStatus = false;
 	} else {
 		printf("SHADER::Created successfully ( Program ID = %d )\n", mProgramID);
+		loadUniforms();
 	}
 }
 
@@ -92,7 +93,7 @@ void Shader::loadUniforms() {
 }
 
 void Shader::loadStoredUniform(glm::mat4 pValue, UNIFORM_LOCATIONS pLocation) {
-	glUniformMatrix4fv(pLocation, 1, GL_FALSE, glm::value_ptr(pValue));
+	glUniformMatrix4fv(mUniformLocations[pLocation], 1, GL_FALSE, glm::value_ptr(pValue));
 }
 
 void Shader::compileShader(std::string pShaderString, GLenum pShaderType) {

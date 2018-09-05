@@ -7,10 +7,14 @@
 #include <vector>
 
 #include "vertexarray.h"
+#include "Texture.h"
 #include <GLM/glm.hpp>
+
+#include "stb_image.h"
 
 struct Model {
 	VertexArray * mVAO;
+	Texture * mDiffuseTex;
 	unsigned int mVertexCount;
 	glm::vec3 mPosition;
 	glm::vec3 mRotation;
@@ -33,8 +37,10 @@ private:
 	static VertexArray * createVAO();
 	static VertexBuffer * createVBO(const float * pData, unsigned int pSize);
 	static IndexBuffer * createIBO(const int * pData, unsigned int pSize);
+	static Texture * createTexture();
 private:
 	static std::list<VertexArray> mVaos;
 	static std::list<VertexBuffer> mVbos;
 	static std::list<IndexBuffer> mIbos;
+	static std::list<Texture> mTextures;
 };

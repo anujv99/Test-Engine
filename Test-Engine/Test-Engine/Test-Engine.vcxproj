@@ -169,6 +169,8 @@
     <ClCompile Include="scenemanager.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="shadermanager.cpp" />
+    <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="vertexbuffer.cpp" />
   </ItemGroup>
@@ -187,6 +189,8 @@
     <ClInclude Include="scenemanager.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="shadermanager.h" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertexbuffer.h" />
   </ItemGroup>

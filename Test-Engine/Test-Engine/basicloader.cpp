@@ -3,6 +3,7 @@
 std::list<VertexArray> BasicLoader::mVaos;
 std::list<VertexBuffer> BasicLoader::mVbos;
 std::list<IndexBuffer> BasicLoader::mIbos;
+std::list<Texture> BasicLoader::mTextures;
 
 Model BasicLoader::loadModel(std::string pFilePath) {
 	std::ifstream tInFile("res/models/" + pFilePath + ".toxic", std::ios::in | std::ios::binary);
@@ -59,7 +60,17 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 	delete[] tTexCoords;
 	delete[] tIndices;
 
-	return Model(tVao, tIbo->getIndicesCount());
+	auto tFinalModel =  Model(tVao, tIbo->getIndicesCount());
+	auto tTex = createTexture();
+	bool status = tTex->loadTexture("res/models/" + pFilePath + ".jpg");
+	if (!status) {
+		printf("LOADER::Texture for model : %s : not found\n", pFilePath.c_str());
+		tFinalModel.mDiffuseTex = nullptr;
+	} else {
+		tFinalModel.mDiffuseTex = tTex;
+	}
+
+	return tFinalModel;
 }
 
 void BasicLoader::cleanUP() {
@@ -71,6 +82,9 @@ void BasicLoader::cleanUP() {
 	}
 	for (auto &sVAO : mVaos) {
 		sVAO.cleanUP();
+	}
+	for (auto &sTex : mTextures) {
+		sTex.cleanUP();
 	}
 }
 
@@ -100,4 +114,10 @@ IndexBuffer * BasicLoader::createIBO(const int * pData, unsigned int pSize) {
 	auto tIbo = IndexBuffer(pData, pSize);
 	mIbos.push_back(tIbo);
 	return &mIbos.back();
+}
+
+Texture * BasicLoader::createTexture() {
+	auto tTexture = Texture();
+	mTextures.push_back(tTexture);
+	return &mTextures.back();
 }

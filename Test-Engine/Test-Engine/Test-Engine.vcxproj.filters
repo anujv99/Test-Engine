@@ -40,18 +40,18 @@
     <Filter Include="Header Files\resourceManager">
       <UniqueIdentifier>{79a01e53-37b3-4538-9ec1-e36c76f21ce2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\opengl_objects">
+      <UniqueIdentifier>{e2460abe-c0eb-43d9-a35e-bd3d047f5542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\opengl_objects">
+      <UniqueIdentifier>{f14a2431-40b7-498f-8ebe-9fc94cafa233}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
     <ClCompile Include="basicmodelrenderer.cpp">
-      <Filter>Source Files\renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="indexbuffer.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -64,12 +64,6 @@
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
     <ClCompile Include="shadermanager.cpp">
-      <Filter>Source Files\renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="vertexarray.cpp">
-      <Filter>Source Files\renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="vertexbuffer.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
     <ClCompile Include="input.cpp">
@@ -92,6 +86,24 @@
     </ClCompile>
     <ClCompile Include="scenemanager.cpp">
       <Filter>Source Files\resourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Source Files\resourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexbuffer.cpp">
+      <Filter>Source Files\opengl_objects</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexarray.cpp">
+      <Filter>Source Files\opengl_objects</Filter>
+    </ClCompile>
+    <ClCompile Include="indexbuffer.cpp">
+      <Filter>Source Files\opengl_objects</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files\opengl_objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c">
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +137,6 @@
     <ClInclude Include="engine.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
-    <ClInclude Include="indexbuffer.h">
-      <Filter>Header Files\renderer</Filter>
-    </ClInclude>
     <ClInclude Include="input.h">
       <Filter>Header Files\essentails</Filter>
     </ClInclude>
@@ -137,11 +146,20 @@
     <ClInclude Include="shadermanager.h">
       <Filter>Header Files\renderer</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files\resourceManager</Filter>
+    </ClInclude>
     <ClInclude Include="vertexarray.h">
-      <Filter>Header Files\renderer</Filter>
+      <Filter>Header Files\opengl_objects</Filter>
     </ClInclude>
     <ClInclude Include="vertexbuffer.h">
-      <Filter>Header Files\renderer</Filter>
+      <Filter>Header Files\opengl_objects</Filter>
+    </ClInclude>
+    <ClInclude Include="indexbuffer.h">
+      <Filter>Header Files\opengl_objects</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files\opengl_objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
