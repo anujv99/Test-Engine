@@ -14,9 +14,15 @@ void TerrainRenderer::draw(std::vector<Terrain*>* pTerrains, const glm::mat4 & p
 
 	for (auto const &pTerrain : *pTerrains) {
 		pTerrain->mVAO->bind();
-		enableVertexAttribArray(3);
+		enableVertexAttribArray(2);
 		drawElements(pTerrain->mVertexCount);
 	}
+}
+
+void TerrainRenderer::setSun(DirectionalLight * pSun, Shader * pShader) {
+	pShader->bind();
+	pShader->loadStoredUniform(pSun->mDirection, UNIFORM_SUN_DIRECTION);
+	pShader->loadStoredUniform(pSun->mColor, UNIFORM_SUN_COLOR);
 }
 
 void TerrainRenderer::drawElements(unsigned int pVertexCount) {

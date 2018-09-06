@@ -120,6 +120,12 @@
     <ClCompile Include="terrainrenderer.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
+    <ClCompile Include="perlinnoise.cpp">
+      <Filter>Source Files\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="directionallightgenerator.cpp">
+      <Filter>Source Files\generators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -184,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="terrainrenderer.h">
       <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="perlinnoise.h">
+      <Filter>Header Files\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="directionallightgenerator.h">
+      <Filter>Header Files\generators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

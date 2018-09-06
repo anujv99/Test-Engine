@@ -1,6 +1,11 @@
 #include "terraingenerator.h"
 
+#include "perlinnoise.h"
+
 Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int pSize) {
+
+	PerlinNoise tPN(1005);
+
 	int count = pVertexCount * pVertexCount;
 	float * vertices = new float[count * 3];
 	float * normals = new float[count * 3];
@@ -10,7 +15,8 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	for (unsigned int i = 0; i<pVertexCount; i++) {
 		for (unsigned int j = 0; j<pVertexCount; j++) {
 			vertices[vertexPointer * 3] = (float)j / ((float)pVertexCount - 1) * pSize;
-			vertices[vertexPointer * 3 + 1] = 0;
+			auto temp = 2 * tPN.noise((double)i / (double)pSize, (double)j / (double)pSize, 0); //Height
+			vertices[vertexPointer * 3 + 1] = (float)temp;
 			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
 			normals[vertexPointer * 3] = 0;
 			normals[vertexPointer * 3 + 1] = 1;

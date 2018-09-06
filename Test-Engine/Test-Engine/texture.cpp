@@ -22,7 +22,6 @@ bool Texture::loadTexture(std::string pImageName) {
 		printf("TEXTURE::Failed to load texture : %s\n", pImageName.c_str());
 		return false;
 	}
-	printf("T\n");
 	stbi_image_free(data);
 	return true;
 }

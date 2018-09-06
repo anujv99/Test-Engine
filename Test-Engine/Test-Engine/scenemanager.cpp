@@ -15,4 +15,5 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 	mActiveScene = &mScenes[mScenes.size() - 1];
 	//mActiveScene->addModel(mAssetManager->loadModel("chair1"));
 	mActiveScene->addTerrain(mAssetManager->generateTerrain(128, 10));
+	mActiveScene->addSun(mAssetManager->createDirectionalLight(glm::vec3(-1), glm::vec3(1)));
 }

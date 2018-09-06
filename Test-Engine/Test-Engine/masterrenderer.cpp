@@ -10,8 +10,9 @@ MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned i
 
 void MasterRenderer::draw(Scene * pScene, const glm::mat4 &mViewMat) {
 	clear();
-	mBasicRenderer.draw(pScene->getBasicModels(), mViewMat, SceneManager::getTerrainShaer());
+	mBasicRenderer.draw(pScene->getBasicModels(), mViewMat, SceneManager::getBasicModelShader());
 	mTerrainRenderer.draw(pScene->getTerrains(), mViewMat, SceneManager::getTerrainShaer());
+	mTerrainRenderer.setSun(pScene->getSun(), SceneManager::getTerrainShaer());
 }
 
 void MasterRenderer::clear() {

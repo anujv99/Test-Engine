@@ -9,11 +9,14 @@ uniform mat4 projection;
 uniform mat4 model;
 uniform mat4 view;
 
-out vec3 Position;
+out vec3 FragPos;  
+out vec3 Normal;
 
 void main() {
-	Position = aPos;
-	gl_Position = projection * view * model * vec4(aPos, 1);
+	vec4 worldPos = model * vec4(aPos, 1.0);
+	FragPos = worldPos.xyz;
+	Normal = mat3(transpose(inverse(model))) * aNorm;
+	gl_Position = projection * view * worldPos;
 }
 
 //#FRAGMENT
@@ -21,10 +24,25 @@ void main() {
 
 out vec4 FragColor;
 
-in vec3 Position;
+struct DirLight {
+	vec3 mDirection;
+	vec3 mColor;
+};
+
+uniform DirLight sun;
+
+in vec3 FragPos;
+in vec3 Normal;
 
 void main() {
-	FragColor = vec4(1, 0, 1, 1);
+
+	vec3 norm = normalize(Normal);
+	vec3 lightDir = normalize(sun.mDirection);
+
+	float diff = max(dot(norm, lightDir), 0.1);
+	vec3 diffuse = diff * sun.mColor;
+
+	FragColor = vec4(diffuse, 1);
 }
 
 //#UNIFORMS

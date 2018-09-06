@@ -1,10 +1,8 @@
 #pragma once
 
-#include <GLM/glm.hpp>
-
-#include <glad/glad.h>
-
 #include "openglresources.h"
+
+#include <GLM/glm.hpp>
 
 struct Terrain {
 	VertexArray * mVAO;
@@ -21,5 +19,6 @@ struct Terrain {
 class TerrainGenerator {
 public:
 	static Terrain createTerrain(unsigned int pVertexCount, unsigned int pSize);
+private:
 };
 

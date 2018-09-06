@@ -18,7 +18,7 @@ public:
 	inline double getMouseYPos() const { return mMouseYPos; }
 	inline double getMouseXOffset() const { return mMouseXOffset; }
 	inline double getMouseYOffset() const { return mMouseYOffset; }
-	
+	inline bool isMouseEnabled() const { return mIsMouseEnabled; }
 	inline double getDeltaTime() const { return mDeltaTime; }
 private:
 	double mMouseXPos;

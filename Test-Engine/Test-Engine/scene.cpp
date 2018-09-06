@@ -21,3 +21,11 @@ void Scene::addTerrain(Terrain * pTerrain) {
 		printf("SCENE::Unable to add terrain to the scene\n");
 	}
 }
+
+void Scene::addSun(DirectionalLight * pSun) {
+	if (pSun != nullptr) {
+		mSun = pSun;
+	} else {
+		printf("SCENE::Unable to add sun\n");
+	}
+}

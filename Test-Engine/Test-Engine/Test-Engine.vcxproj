@@ -159,6 +159,7 @@
     <ClCompile Include="basicloader.cpp" />
     <ClCompile Include="basicmodelrenderer.cpp" />
     <ClCompile Include="cameramaster.cpp" />
+    <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="masterrenderer.cpp" />
     <ClCompile Include="openglresources.cpp" />
+    <ClCompile Include="perlinnoise.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="scenemanager.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -183,12 +185,14 @@
     <ClInclude Include="basicmodelrenderer.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="cameramaster.h" />
+    <ClInclude Include="directionallightgenerator.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="masterrenderer.h" />
     <ClInclude Include="openglresources.h" />
+    <ClInclude Include="perlinnoise.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scenemanager.h" />
     <ClInclude Include="shader.h" />

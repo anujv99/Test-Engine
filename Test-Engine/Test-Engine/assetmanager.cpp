@@ -17,3 +17,9 @@ Terrain * AssetManager::generateTerrain(unsigned int pVertexCount, unsigned int 
 	mTerrains.push_back(tTerrain);
 	return &mTerrains.back();
 }
+
+DirectionalLight * AssetManager::createDirectionalLight(glm::vec3 pDirection, glm::vec3 pColor) {
+	auto tDirectionalLight = DirectionalLightGenerator::createDirectionalLight(pDirection, pColor);
+	mDirectionalLights.push_back(tDirectionalLight);
+	return &mDirectionalLights.back();
+}

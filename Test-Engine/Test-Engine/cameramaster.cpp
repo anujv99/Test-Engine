@@ -20,7 +20,9 @@ void CameraMaster::checkForMovement() {
 		camera.ProcessKeyboard(RIGHT, (float)mInput->getDeltaTime());
 	}
 
-	camera.ProcessMouseMovement((float)mInput->getMouseXOffset(), (float)mInput->getMouseYOffset());
+	if (!mInput->isMouseEnabled()) {
+		camera.ProcessMouseMovement((float)mInput->getMouseXOffset(), (float)mInput->getMouseYOffset());
+	}
 
 }
 

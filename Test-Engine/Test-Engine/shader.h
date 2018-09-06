@@ -12,7 +12,9 @@
 enum UNIFORM_LOCATIONS {
 	UNIFORM_MATRIX_MODEL,
 	UNIFORM_MATRIX_PROJECTION,
-	UNIFORM_MATRIX_VIEW
+	UNIFORM_MATRIX_VIEW,
+	UNIFORM_SUN_DIRECTION,
+	UNIFORM_SUN_COLOR
 };
 
 class Shader {
@@ -21,6 +23,7 @@ public:
 	void cleanUP();
 public:
 	void loadStoredUniform(glm::mat4 pValue, UNIFORM_LOCATIONS pLocation);
+	void loadStoredUniform(glm::vec3 pValue, UNIFORM_LOCATIONS pLocation);
 public:
 	inline void bind() const { glUseProgram(mProgramID); }
 	inline void unBind() const { glUseProgram(0); }
@@ -29,7 +32,7 @@ public:
 private:
 	unsigned int mProgramID, mVertexShaderID, mFragmentShaderID;
 	bool mShaderStatus = true;
-	unsigned int mUniformLocations[3];
+	unsigned int mUniformLocations[10];
 private:
 	void createShaders(std::ifstream * pInFile);
 	void compileShader(std::string pShaderString, GLenum pShaderType);

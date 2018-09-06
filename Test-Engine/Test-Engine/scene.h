@@ -9,9 +9,12 @@ public:
 public:
 	void addModel(Model * pModel);
 	void addTerrain(Terrain * pTerrain);
+	void addSun(DirectionalLight * pSun);
 	inline std::vector<Model*> * getBasicModels() { return &mModels; }
 	inline std::vector<Terrain*> * getTerrains() { return &mTerrains; }
+	inline DirectionalLight * getSun() { return mSun; }
 private:
 	std::vector<Model*> mModels;
 	std::vector<Terrain*> mTerrains;
+	DirectionalLight * mSun;
 };

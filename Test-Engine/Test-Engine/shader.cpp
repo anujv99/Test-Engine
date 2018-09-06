@@ -89,11 +89,17 @@ void Shader::loadUniforms() {
 	mUniformLocations[UNIFORM_MATRIX_MODEL] = getUniformLocation("model");
 	mUniformLocations[UNIFORM_MATRIX_PROJECTION] = getUniformLocation("projection");
 	mUniformLocations[UNIFORM_MATRIX_VIEW] = getUniformLocation("view");
+	mUniformLocations[UNIFORM_SUN_DIRECTION] = getUniformLocation("sun.mDirection");
+	mUniformLocations[UNIFORM_SUN_COLOR] = getUniformLocation("sun.mColor");
 	unBind();
 }
 
 void Shader::loadStoredUniform(glm::mat4 pValue, UNIFORM_LOCATIONS pLocation) {
 	glUniformMatrix4fv(mUniformLocations[pLocation], 1, GL_FALSE, glm::value_ptr(pValue));
+}
+
+void Shader::loadStoredUniform(glm::vec3 pValue, UNIFORM_LOCATIONS pLocation) {
+	glUniform3f(mUniformLocations[pLocation], pValue.x, pValue.y, pValue.z);
 }
 
 void Shader::compileShader(std::string pShaderString, GLenum pShaderType) {
