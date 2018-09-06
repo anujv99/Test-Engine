@@ -1,5 +1,7 @@
 #include "input.h"
 
+#include "antialiasing.h"
+
 void cursor_pos_callback(GLFWwindow * pWindow, double pxPos, double pyPos);
 
 void Input::setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeight) {
@@ -17,6 +19,8 @@ void Input::setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeigh
 
 	mDeltaTime = 0.0;
 	mLastFrameTime = 0.0;
+
+	AntiAliasing::setWireframeBool(&mIsWireframe);
 }
 
 void Input::calculateIO() {
@@ -58,6 +62,15 @@ void Input::calculateMouseData() {
 			glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
 		mIsMouseEnabled = !mIsMouseEnabled;
+	}
+
+	if (isKeyPressed(GLFW_KEY_F3)) {
+		if (mIsWireframe) {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		} else {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		}
+		mIsWireframe = !mIsWireframe;
 	}
 
 }

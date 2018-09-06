@@ -21,6 +21,11 @@ int Engine::init() {
 	mScenes = new SceneManager(&mAssetManager);
 	mCamera = CameraMaster(&mInput);
 
+	glfwSwapInterval(0);
+
+	glfwWindowHint(GLFW_SAMPLES, 4);
+	glEnable(GL_MULTISAMPLE);
+
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
 }
@@ -39,6 +44,7 @@ void Engine::run() {
 }
 
 void Engine::destroy() {
+	mRenderer.cleanUP();
 	OpenGLResources::cleanUP();
 	ShaderManager::cleanUP();
 	delete(mScenes);

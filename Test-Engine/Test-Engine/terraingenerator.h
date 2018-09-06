@@ -3,6 +3,7 @@
 #include "openglresources.h"
 
 #include <GLM/glm.hpp>
+#include "perlinnoise.h"
 
 struct Terrain {
 	VertexArray * mVAO;
@@ -20,5 +21,6 @@ class TerrainGenerator {
 public:
 	static Terrain createTerrain(unsigned int pVertexCount, unsigned int pSize);
 private:
+	static glm::vec3 calcluteNormal(int x, int y, int size, PerlinNoise pPN);
 };
 

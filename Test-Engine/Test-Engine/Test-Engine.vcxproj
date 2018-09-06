@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c" />
+    <ClCompile Include="antialiasing.cpp" />
     <ClCompile Include="assetmanager.cpp" />
     <ClCompile Include="basicloader.cpp" />
     <ClCompile Include="basicmodelrenderer.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="vertexbuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="antialiasing.h" />
     <ClInclude Include="assetmanager.h" />
     <ClInclude Include="basicloader.h" />
     <ClInclude Include="basicmodelrenderer.h" />
@@ -206,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl" />
+    <None Include="res\shaders\fboQuad.glsl" />
     <None Include="res\shaders\terrain.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

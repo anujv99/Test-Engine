@@ -27,6 +27,7 @@ private:
 	double mMouseXOffset;
 	double mMouseYOffset;
 	bool mIsMouseEnabled = true;
+	bool mIsWireframe = false;
 private:
 	double mLastMouseXPos;
 	double mLastMouseYPos;

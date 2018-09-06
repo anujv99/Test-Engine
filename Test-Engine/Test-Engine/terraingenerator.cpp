@@ -1,10 +1,7 @@
 #include "terraingenerator.h"
 
-#include "perlinnoise.h"
-
 Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int pSize) {
-
-	PerlinNoise tPN(1005);
+	PerlinNoise tPN(1);
 
 	int count = pVertexCount * pVertexCount;
 	float * vertices = new float[count * 3];
@@ -12,33 +9,37 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	float * textureCoords = new float[count * 2];
 	int * indices = new int[6 * (pVertexCount - 1)*(pVertexCount - 1)];
 	int vertexPointer = 0;
-	for (unsigned int i = 0; i<pVertexCount; i++) {
-		for (unsigned int j = 0; j<pVertexCount; j++) {
+	for (unsigned int i = 0; i < pVertexCount; i++) {
+		for (unsigned int j = 0; j < pVertexCount; j++) {
 			vertices[vertexPointer * 3] = (float)j / ((float)pVertexCount - 1) * pSize;
 			auto temp = 2 * tPN.noise((double)i / (double)pSize, (double)j / (double)pSize, 0); //Height
 			vertices[vertexPointer * 3 + 1] = (float)temp;
 			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
-			normals[vertexPointer * 3] = 0;
-			normals[vertexPointer * 3 + 1] = 1;
-			normals[vertexPointer * 3 + 2] = 0;
+
+			auto norm = calcluteNormal(i, j, pSize, tPN);
+			normals[vertexPointer * 3] = norm.x;
+			normals[vertexPointer * 3 + 1] = norm.y;
+			normals[vertexPointer * 3 + 2] = norm.z;
+
 			textureCoords[vertexPointer * 2] = (float)j / ((float)pVertexCount - 1);
 			textureCoords[vertexPointer * 2 + 1] = (float)i / ((float)pVertexCount - 1);
 			vertexPointer++;
 		}
 	}
 	int pointer = 0;
-	for (unsigned int gz = 0; gz<pVertexCount - 1; gz++) {
-		for (unsigned int gx = 0; gx<pVertexCount - 1; gx++) {
+	for (unsigned int gz = 0; gz < pVertexCount - 1; gz++) {
+		for (unsigned int gx = 0; gx < pVertexCount - 1; gx++) {
 			int topLeft = (gz*pVertexCount) + gx;
 			int topRight = topLeft + 1;
 			int bottomLeft = ((gz + 1)*pVertexCount) + gx;
 			int bottomRight = bottomLeft + 1;
+
 			indices[pointer++] = topLeft;
 			indices[pointer++] = bottomLeft;
 			indices[pointer++] = topRight;
 			indices[pointer++] = topRight;
-			indices[pointer++] = bottomLeft;
 			indices[pointer++] = bottomRight;
+			indices[pointer++] = bottomLeft;
 		}
 	}
 
@@ -71,4 +72,14 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	delete[] indices;
 
 	return Terrain(tVao, tIbo->getIndicesCount());
+}
+
+glm::vec3 TerrainGenerator::calcluteNormal(int x, int y, int size, PerlinNoise pPN) {
+	float heightL = 2 * (float)pPN.noise((double)(x - 1) / (double)size, (double)y / (double)size, 0);
+	float heightR = 2 * (float)pPN.noise((double)(x + 1) / (double)size, (double)y / (double)size, 0);
+	float heightD = 2 * (float)pPN.noise((double)x / (double)size, (double)(y - 1) / (double)size, 0);
+	float heightU = 2 * (float)pPN.noise((double)x / (double)size, (double)(y + 1) / (double)size, 0);
+	glm::vec3 norm(heightL - heightR, 0.2f, heightD - heightU);
+	norm = glm::normalize(norm);
+	return norm;
 }

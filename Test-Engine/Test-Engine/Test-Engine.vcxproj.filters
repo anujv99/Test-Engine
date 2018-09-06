@@ -126,6 +126,9 @@
     <ClCompile Include="directionallightgenerator.cpp">
       <Filter>Source Files\generators</Filter>
     </ClCompile>
+    <ClCompile Include="antialiasing.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -197,12 +200,18 @@
     <ClInclude Include="directionallightgenerator.h">
       <Filter>Header Files\generators</Filter>
     </ClInclude>
+    <ClInclude Include="antialiasing.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl">
       <Filter>Resource Files\shaders</Filter>
     </None>
     <None Include="res\shaders\terrain.glsl">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="res\shaders\fboQuad.glsl">
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>

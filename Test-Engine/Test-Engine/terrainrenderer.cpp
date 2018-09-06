@@ -14,7 +14,7 @@ void TerrainRenderer::draw(std::vector<Terrain*>* pTerrains, const glm::mat4 & p
 
 	for (auto const &pTerrain : *pTerrains) {
 		pTerrain->mVAO->bind();
-		enableVertexAttribArray(2);
+		enableVertexAttribArray(1);
 		drawElements(pTerrain->mVertexCount);
 	}
 }
