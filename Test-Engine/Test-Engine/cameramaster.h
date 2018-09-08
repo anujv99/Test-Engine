@@ -11,6 +11,7 @@ public:
 public:
 	inline glm::mat4 getViewMatrix() { return camera.GetViewMatrix(); }
 private:
+	float mCameraSpeed = 5.0f;;
 	Camera camera;
 	void checkForMovement();
 	Input * mInput;

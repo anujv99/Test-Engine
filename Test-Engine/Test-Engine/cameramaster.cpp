@@ -7,17 +7,20 @@ void CameraMaster::updateCamera() {
 }
 
 void CameraMaster::checkForMovement() {
+
+	
+
 	if (mInput->isKeyDown(GLFW_KEY_W)) {
-		camera.ProcessKeyboard(FORWARD, (float)mInput->getDeltaTime());
+		camera.ProcessKeyboard(FORWARD, mCameraSpeed * (float)mInput->getDeltaTime());
 	}
 	if (mInput->isKeyDown(GLFW_KEY_S)) {
-		camera.ProcessKeyboard(BACKWARD, (float)mInput->getDeltaTime());
+		camera.ProcessKeyboard(BACKWARD, mCameraSpeed * (float)mInput->getDeltaTime());
 	}
 	if (mInput->isKeyDown(GLFW_KEY_A)) {
-		camera.ProcessKeyboard(LEFT, (float)mInput->getDeltaTime());
+		camera.ProcessKeyboard(LEFT, mCameraSpeed * (float)mInput->getDeltaTime());
 	}
 	if (mInput->isKeyDown(GLFW_KEY_D)) {
-		camera.ProcessKeyboard(RIGHT, (float)mInput->getDeltaTime());
+		camera.ProcessKeyboard(RIGHT, mCameraSpeed * (float)mInput->getDeltaTime());
 	}
 
 	if (!mInput->isMouseEnabled()) {

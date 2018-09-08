@@ -1,7 +1,8 @@
 #include "terraingenerator.h"
 
 Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int pSize) {
-	PerlinNoise tPN(1);
+
+	HeightsGenerator tHeightGenerator(1254544);
 
 	int count = pVertexCount * pVertexCount;
 	float * vertices = new float[count * 3];
@@ -12,14 +13,14 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	for (unsigned int i = 0; i < pVertexCount; i++) {
 		for (unsigned int j = 0; j < pVertexCount; j++) {
 			vertices[vertexPointer * 3] = (float)j / ((float)pVertexCount - 1) * pSize;
-			auto temp = 2 * tPN.noise((double)i / (double)pSize, (double)j / (double)pSize, 0); //Height
-			vertices[vertexPointer * 3 + 1] = (float)temp;
+			vertices[vertexPointer * 3 + 1] = getHeight(i, j, &tHeightGenerator);
 			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
 
-			auto norm = calcluteNormal(i, j, pSize, tPN);
-			normals[vertexPointer * 3] = norm.x;
-			normals[vertexPointer * 3 + 1] = norm.y;
-			normals[vertexPointer * 3 + 2] = norm.z;
+			auto tNorm = calculateNormal(i, j, &tHeightGenerator);
+
+			normals[vertexPointer * 3] = tNorm.x;
+			normals[vertexPointer * 3 + 1] = tNorm.y;
+			normals[vertexPointer * 3 + 2] = tNorm.z;
 
 			textureCoords[vertexPointer * 2] = (float)j / ((float)pVertexCount - 1);
 			textureCoords[vertexPointer * 2 + 1] = (float)i / ((float)pVertexCount - 1);
@@ -74,12 +75,17 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	return Terrain(tVao, tIbo->getIndicesCount());
 }
 
-glm::vec3 TerrainGenerator::calcluteNormal(int x, int y, int size, PerlinNoise pPN) {
-	float heightL = 2 * (float)pPN.noise((double)(x - 1) / (double)size, (double)y / (double)size, 0);
-	float heightR = 2 * (float)pPN.noise((double)(x + 1) / (double)size, (double)y / (double)size, 0);
-	float heightD = 2 * (float)pPN.noise((double)x / (double)size, (double)(y - 1) / (double)size, 0);
-	float heightU = 2 * (float)pPN.noise((double)x / (double)size, (double)(y + 1) / (double)size, 0);
-	glm::vec3 norm(heightL - heightR, 0.2f, heightD - heightU);
-	norm = glm::normalize(norm);
-	return norm;
+glm::vec3 TerrainGenerator::calculateNormal(int x, int y, HeightsGenerator * pHeightsGenerator) {
+	float heightL = getHeight(x - 1, y, pHeightsGenerator);
+	float heightR = getHeight(x + 1, y, pHeightsGenerator);
+	float heightD = getHeight(x, y - 1, pHeightsGenerator);
+	float heightU = getHeight(x, y + 1, pHeightsGenerator);
+
+	glm::vec3 sNorm(heightL - heightR, 2.0f, heightD - heightU);
+	sNorm = glm::normalize(sNorm);
+	return sNorm;
+}
+
+float TerrainGenerator::getHeight(int x, int y, HeightsGenerator * pHeightsGenerator) {
+	return pHeightsGenerator->generateHeight(x, y);
 }

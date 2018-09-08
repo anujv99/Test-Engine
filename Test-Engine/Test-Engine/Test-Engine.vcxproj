@@ -72,25 +72,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
     <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
     <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
     <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
     <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -163,6 +163,7 @@
     <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="heightsgenerator.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="directionallightgenerator.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="heightsgenerator.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="masterrenderer.h" />

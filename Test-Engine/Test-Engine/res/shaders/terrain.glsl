@@ -36,16 +36,14 @@ flat in vec3 Normal;
 
 vec3 lerp(float height) {
 	
-	if (height > 1) {
-		height = 1;
-	}
+	height /= 2.0;
+
+	vec3 green = normalize(vec3(80, 171, 93));
+	vec3 gray = normalize(vec3(120));
 
 	if (height < 0) {
-		height = 0;
+		green += ((-height) / 4.0) * normalize(vec3(135, 184, 82));
 	}
-
-	vec3 green = vec3(0, 0.4, 0);
-	vec3 gray = vec3(0.7);
 
 	return gray * height + (1 - height) * green;
 }

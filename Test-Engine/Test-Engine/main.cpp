@@ -4,6 +4,8 @@
 
 #define PAUSE system("PAUSE")
 
+#define __MSAA__
+
 int main() {
 	Engine engine;
 	int tStatus = engine.init();
