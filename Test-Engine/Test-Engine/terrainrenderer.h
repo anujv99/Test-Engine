@@ -1,7 +1,5 @@
 #pragma once
 
-#include "terraingenerator.h"
-
 #include "scenemanager.h"
 
 class TerrainRenderer {

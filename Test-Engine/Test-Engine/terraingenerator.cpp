@@ -1,6 +1,18 @@
 #include "terraingenerator.h"
 
+std::vector<glm::vec3> mTerrainColors{ 
+	glm::vec3(210 / 255, 178 / 255, 99 / 255),
+	glm::vec3(135, 184, 82),
+	glm::vec3(80, 171, 93),
+	glm::vec3(120, 120, 120),
+	glm::vec3(200, 200, 210)
+};
+
 Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int pSize) {
+
+	for (unsigned int i = 0; i < mTerrainColors.size(); i++) {
+		mTerrainColors[i] = glm::normalize(mTerrainColors[i]);
+	}
 
 	HeightsGenerator tHeightGenerator(1254544);
 
@@ -8,6 +20,7 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	float * vertices = new float[count * 3];
 	float * normals = new float[count * 3];
 	float * textureCoords = new float[count * 2];
+	float * colors = new float[count * 3];
 	int * indices = new int[6 * (pVertexCount - 1)*(pVertexCount - 1)];
 	int vertexPointer = 0;
 	for (unsigned int i = 0; i < pVertexCount; i++) {
@@ -16,8 +29,13 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 			vertices[vertexPointer * 3 + 1] = getHeight(i, j, &tHeightGenerator);
 			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
 
-			auto tNorm = calculateNormal(i, j, &tHeightGenerator);
+			auto color = generateColor(vertices[vertexPointer * 3 + 1]);
 
+			colors[vertexPointer * 3] = color.x;
+			colors[vertexPointer * 3 + 1] = color.y;
+			colors[vertexPointer * 3 + 2] = color.z;
+
+			auto tNorm = calculateNormal(i, j, &tHeightGenerator);
 			normals[vertexPointer * 3] = tNorm.x;
 			normals[vertexPointer * 3 + 1] = tNorm.y;
 			normals[vertexPointer * 3 + 2] = tNorm.z;
@@ -62,6 +80,11 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	tVao->addVertexBuffer(2, 2);
 	tVbo->unBind();
 
+	tVbo = OpenGLResources::createVBO(colors, count * 3 * sizeof(float));
+	tVbo->bind();
+	tVao->addVertexBuffer(3, 3);
+	tVbo->unBind();
+
 	auto tIbo = OpenGLResources::createIBO(indices, sizeof(int) * (6 * (pVertexCount - 1)*(pVertexCount - 1)));
 	tIbo->bind();
 
@@ -70,7 +93,10 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	delete[] vertices;
 	delete[] normals;
 	delete[] textureCoords;
+	delete[] colors;
 	delete[] indices;
+
+	tHeightGenerator.cleanUP();
 
 	return Terrain(tVao, tIbo->getIndicesCount());
 }
@@ -88,4 +114,14 @@ glm::vec3 TerrainGenerator::calculateNormal(int x, int y, HeightsGenerator * pHe
 
 float TerrainGenerator::getHeight(int x, int y, HeightsGenerator * pHeightsGenerator) {
 	return pHeightsGenerator->generateHeight(x, y);
+}
+
+glm::vec3 TerrainGenerator::generateColor(float height) {
+	static float part = 1.0f / (mTerrainColors.size() - 1);
+	static float amplitude = 15.0f;
+	float value = (height + amplitude) / (amplitude * 2);
+	value = std::clamp(value, 0.0f, 0.9999f);
+	int firstBiome = (int)std::floor(value / part);
+	float blend = (value - (firstBiome * part)) / part;
+	return (blend * mTerrainColors[firstBiome] + ((1 - blend) * mTerrainColors[firstBiome + 1]));
 }

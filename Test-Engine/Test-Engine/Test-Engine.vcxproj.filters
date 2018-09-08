@@ -132,6 +132,12 @@
     <ClCompile Include="perlinnoise.cpp">
       <Filter>Source Files\generators</Filter>
     </ClCompile>
+    <ClCompile Include="watergenerator.cpp">
+      <Filter>Source Files\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="waterrenderer.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -209,6 +215,12 @@
     <ClInclude Include="perlinnoise.h">
       <Filter>Header Files\generators</Filter>
     </ClInclude>
+    <ClInclude Include="watergenerator.h">
+      <Filter>Header Files\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="waterrenderer.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl">
@@ -218,6 +230,9 @@
       <Filter>Resource Files\shaders</Filter>
     </None>
     <None Include="res\shaders\fboQuad.glsl">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="res\shaders\water.glsl">
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>

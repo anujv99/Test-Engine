@@ -4,6 +4,7 @@
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNorm;
 layout (location = 2) in vec2 aTexCoords;
+layout (location = 3) in vec3 aColors;
 
 uniform mat4 projection;
 uniform mat4 model;
@@ -11,8 +12,10 @@ uniform mat4 view;
 
 out vec3 FragPos;  
 flat out vec3 Normal;
+flat out vec3 Color;
 
 void main() {
+	Color = aColors;
 	vec4 worldPos = model * vec4(aPos, 1.0);
 	FragPos = worldPos.xyz;
 	Normal = mat3(transpose(inverse(model))) * aNorm;
@@ -33,20 +36,8 @@ uniform DirLight sun;
 
 in vec3 FragPos;
 flat in vec3 Normal;
+flat in vec3 Color;
 
-vec3 lerp(float height) {
-	
-	height /= 2.0;
-
-	vec3 green = normalize(vec3(80, 171, 93));
-	vec3 gray = normalize(vec3(120));
-
-	if (height < 0) {
-		green += ((-height) / 4.0) * normalize(vec3(135, 184, 82));
-	}
-
-	return gray * height + (1 - height) * green;
-}
 
 void main() {
 
@@ -57,7 +48,7 @@ void main() {
 	float diff = max(dot(norm, lightDir), 0.1);
 	vec3 diffuse = diff * sun.mColor;
 
-	FragColor = vec4(lerp(FragPos.y) * diffuse, 1);
+	FragColor = vec4(Color * diffuse, 1.0);
 }
 
 //#UNIFORMS

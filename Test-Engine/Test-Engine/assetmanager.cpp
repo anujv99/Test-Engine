@@ -23,3 +23,9 @@ DirectionalLight * AssetManager::createDirectionalLight(glm::vec3 pDirection, gl
 	mDirectionalLights.push_back(tDirectionalLight);
 	return &mDirectionalLights.back();
 }
+
+Water * AssetManager::addWater(unsigned int pVertexCount, unsigned int pSize) {
+	auto tWater = WaterGenerator::addWater(pVertexCount, pSize);
+	mWaters.push_back(tWater);
+	return &mWaters.back();
+}

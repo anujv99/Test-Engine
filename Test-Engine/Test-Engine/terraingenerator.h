@@ -1,5 +1,8 @@
 #pragma once
 
+#include <algorithm>
+#include <vector>
+
 #include "openglresources.h"
 #include "heightsgenerator.h"
 
@@ -14,7 +17,6 @@ struct Terrain {
 
 	Terrain(VertexArray * pVAO, unsigned int pVertexCount) :
 		mVAO(pVAO), mVertexCount(pVertexCount) {}
-
 };
 
 class TerrainGenerator {
@@ -23,5 +25,6 @@ public:
 private:
 	static glm::vec3 calculateNormal(int x, int y, HeightsGenerator * pHeightsGenerator);
 	static float getHeight(int x, int y, HeightsGenerator * pHeightsGenerator);
+	static glm::vec3 generateColor(float height);
 };
 

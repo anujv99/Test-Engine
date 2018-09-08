@@ -9,6 +9,7 @@ class HeightsGenerator {
 public:
 	HeightsGenerator(int pSeed);
 	float generateHeight(int x, int y);
+	void cleanUP() { delete(mPerlinNoise); }
 private:
 	float getNoise(int x, int y);
 	float getSmoothNoise(int x, int y);

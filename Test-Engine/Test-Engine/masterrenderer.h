@@ -5,6 +5,7 @@
 #include "shadermanager.h"
 #include "terrainrenderer.h"
 #include "antialiasing.h"
+#include "waterrenderer.h"
 
 class MasterRenderer {
 public:
@@ -19,5 +20,6 @@ private:
 	glm::mat4 mProjection;
 	BasicModelRenderer mBasicRenderer;
 	TerrainRenderer mTerrainRenderer;
+	WaterRenderer mWaterRenderer;
 };
 

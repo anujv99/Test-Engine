@@ -12,6 +12,7 @@ public:
 public:
 	static Shader * getBasicModelShader() { return mBasicModelShader; }
 	static Shader * getTerrainShaer() { return mTerrainShader; }
+	static Shader * getWaterShader() { return mWaterShader; }
 private:
 	AssetManager * mAssetManager;
 	std::vector<Scene> mScenes;
@@ -19,4 +20,5 @@ private:
 private:
 	static Shader * mBasicModelShader;
 	static Shader * mTerrainShader;
+	static Shader * mWaterShader;
 };

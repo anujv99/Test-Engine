@@ -6,13 +6,13 @@ MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned i
 	mProjection = glm::perspective(glm::radians(45.0f), (float)pWindowWidth / (float)pWindowHeight, 0.1f, 100.0f);
 	mBasicRenderer = BasicModelRenderer(mProjection);
 	mTerrainRenderer = TerrainRenderer(mProjection);
+	mWaterRenderer = WaterRenderer(mProjection);
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1, 1, 1, 1);
 
 #ifdef __MSAA__
 	AntiAliasing::start(pWindowWidth, pWindowHeight);
 #endif // __MSAA__
-
 }
 
 void MasterRenderer::draw(Scene * pScene, const glm::mat4 &pViewMat) {
@@ -39,5 +39,6 @@ void MasterRenderer::clear() {
 void MasterRenderer::drawAssets(Scene * pScene, const glm::mat4 & pViewMat) {
 	mBasicRenderer.draw(pScene->getBasicModels(), pViewMat, SceneManager::getBasicModelShader());
 	mTerrainRenderer.draw(pScene->getTerrains(), pViewMat, SceneManager::getTerrainShaer());
+	mWaterRenderer.draw(pScene->getWaters(), pViewMat, SceneManager::getWaterShader());
 	mTerrainRenderer.setSun(pScene->getSun(), SceneManager::getTerrainShaer());
 }

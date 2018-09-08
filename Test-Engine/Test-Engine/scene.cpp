@@ -29,3 +29,11 @@ void Scene::addSun(DirectionalLight * pSun) {
 		printf("SCENE::Unable to add sun\n");
 	}
 }
+
+void Scene::addWater(Water * pWater) {
+	if (pWater != nullptr) {
+		mWaters.push_back(pWater);
+	} else {
+		printf("SCENE::Unable to add water to the scene\n");
+	}
+}
