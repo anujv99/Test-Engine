@@ -9,6 +9,7 @@ public:
 	static void renderQuad();
 	static void cleanUP();
 	static void setWireframeBool(bool * pWireframe) { mIsWireframe = pWireframe; }
+	static unsigned int getMiltisampledFBO() { return mMultisampledFBO; }
 private:
 	static unsigned int mMultisampledFBO, mIntermediateFBO;
 	static unsigned int mTextureMultisampled, mTextureIntermediate;

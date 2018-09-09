@@ -8,8 +8,6 @@ void CameraMaster::updateCamera() {
 
 void CameraMaster::checkForMovement() {
 
-	
-
 	if (mInput->isKeyDown(GLFW_KEY_W)) {
 		camera.ProcessKeyboard(FORWARD, mCameraSpeed * (float)mInput->getDeltaTime());
 	}

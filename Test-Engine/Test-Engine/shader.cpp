@@ -23,6 +23,14 @@ void Shader::cleanUP() {
 	printf("SHADER::Deleted successfully ( Program ID = %d )\n", mProgramID);
 }
 
+void Shader::setInt(int pValue, std::string pName) {
+	glUniform1i(getUniformLocation(pName), pValue);
+}
+
+void Shader::setFloat(float pValue, std::string pName) {
+	glUniform1f(getUniformLocation(pName), pValue);
+}
+
 void Shader::createShaders(std::ifstream * pInFile) {
 	GLenum tShaderType = 0;
 	std::string tLine;
@@ -91,11 +99,17 @@ void Shader::loadUniforms() {
 	mUniformLocations[UNIFORM_MATRIX_VIEW] = getUniformLocation("view");
 	mUniformLocations[UNIFORM_SUN_DIRECTION] = getUniformLocation("sun.mDirection");
 	mUniformLocations[UNIFORM_SUN_COLOR] = getUniformLocation("sun.mColor");
+	mUniformLocations[UNIFORM_CLIP_PLANE] = getUniformLocation("aClipPlane");
+	mUniformLocations[UNIFORM_CAMERA_POSITION] = getUniformLocation("cameraPos");
 	unBind();
 }
 
 void Shader::loadStoredUniform(glm::mat4 pValue, UNIFORM_LOCATIONS pLocation) {
 	glUniformMatrix4fv(mUniformLocations[pLocation], 1, GL_FALSE, glm::value_ptr(pValue));
+}
+
+void Shader::loadStoredUniform(glm::vec4 pValue, UNIFORM_LOCATIONS pLocation) {
+	glUniform4f(mUniformLocations[pLocation], pValue.x, pValue.y, pValue.z, pValue.w);
 }
 
 void Shader::loadStoredUniform(glm::vec3 pValue, UNIFORM_LOCATIONS pLocation) {

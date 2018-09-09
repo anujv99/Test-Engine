@@ -14,7 +14,9 @@ enum UNIFORM_LOCATIONS {
 	UNIFORM_MATRIX_PROJECTION,
 	UNIFORM_MATRIX_VIEW,
 	UNIFORM_SUN_DIRECTION,
-	UNIFORM_SUN_COLOR
+	UNIFORM_SUN_COLOR,
+	UNIFORM_CLIP_PLANE,
+	UNIFORM_CAMERA_POSITION
 };
 
 class Shader {
@@ -22,7 +24,11 @@ public:
 	Shader(std::string pFileName);
 	void cleanUP();
 public:
+	void setInt(int pValue, std::string pName);
+	void setFloat(float pValue, std::string pName);
+public:
 	void loadStoredUniform(glm::mat4 pValue, UNIFORM_LOCATIONS pLocation);
+	void loadStoredUniform(glm::vec4 pValue, UNIFORM_LOCATIONS pLocation);
 	void loadStoredUniform(glm::vec3 pValue, UNIFORM_LOCATIONS pLocation);
 public:
 	inline void bind() const { glUseProgram(mProgramID); }

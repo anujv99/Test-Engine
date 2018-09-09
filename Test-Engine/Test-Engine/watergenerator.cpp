@@ -4,22 +4,24 @@
 #include <iostream>
 
 Water WaterGenerator::addWater(unsigned int pVertexCount, unsigned int pSize) {
-	float count = pVertexCount * pVertexCount;
+	glProvokingVertex(GL_FIRST_VERTEX_CONVENTION);
+	float count = (float)pVertexCount * (float)pVertexCount;
 
-	float * vertices = new float[count * 3];
+	float * vertices = new float[count * 2];
 
 	int vertexPointer = 0;
 	for (unsigned int i = 0; i < pVertexCount; i++) {
 		for (unsigned int j = 0; j < pVertexCount; j++) {
-			vertices[vertexPointer * 3] = (float)j / ((float)pVertexCount - 1) * pSize;
-			vertices[vertexPointer * 3 + 1] = 0;
-			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
+			vertices[vertexPointer * 2] = (float)j / ((float)pVertexCount - 1) * pSize;
+			vertices[vertexPointer * 2 + 1] = (float)i / ((float)pVertexCount - 1) * pSize;
 			vertexPointer++;
 		}
 	}
 
 	std::vector<float> newVertices;
-	newVertices.reserve(((count * 3) / 2) * 3);
+	newVertices.reserve(((count * 2) / 2) * 3);
+	std::vector<float> indicators;
+	indicators.reserve(((count * 2) / 2) * 6);
 	
 	for (unsigned int gz = 0; gz < pVertexCount - 1; gz++) {
 		for (unsigned int gx = 0; gx < pVertexCount - 1; gx++) {
@@ -28,29 +30,53 @@ Water WaterGenerator::addWater(unsigned int pVertexCount, unsigned int pSize) {
 			int bottomLeft = ((gz + 1)*pVertexCount) + gx;
 			int bottomRight = bottomLeft + 1;
 
-			newVertices.push_back(vertices[topLeft * 3]);
-			newVertices.push_back(vertices[topLeft * 3 + 1]);
-			newVertices.push_back(vertices[topLeft * 3 + 2]);
+			newVertices.push_back(vertices[topLeft * 2]);
+			newVertices.push_back(vertices[topLeft * 2 + 1]);
 
-			newVertices.push_back(vertices[bottomLeft * 3]);
-			newVertices.push_back(vertices[bottomLeft * 3 + 1]);
-			newVertices.push_back(vertices[bottomLeft * 3 + 2]);
+			indicators.push_back(vertices[topRight * 2]);
+			indicators.push_back(vertices[topRight * 2 + 1]);
+			indicators.push_back(vertices[bottomLeft * 2]);
+			indicators.push_back(vertices[bottomLeft * 2 + 1]);
 
-			newVertices.push_back(vertices[topRight * 3]);
-			newVertices.push_back(vertices[topRight * 3 + 1]);
-			newVertices.push_back(vertices[topRight * 3 + 2]);
+			newVertices.push_back(vertices[bottomLeft * 2]);
+			newVertices.push_back(vertices[bottomLeft * 2 + 1]);
 
-			newVertices.push_back(vertices[topRight * 3]);
-			newVertices.push_back(vertices[topRight * 3 + 1]);
-			newVertices.push_back(vertices[topRight * 3 + 2]);
+			indicators.push_back(vertices[topLeft * 2]);
+			indicators.push_back(vertices[topLeft * 2 + 1]);
+			indicators.push_back(vertices[topRight * 2]);
+			indicators.push_back(vertices[topRight * 2 + 1]);
 
-			newVertices.push_back(vertices[bottomRight * 3]);
-			newVertices.push_back(vertices[bottomRight * 3 + 1]);
-			newVertices.push_back(vertices[bottomRight * 3 + 2]);
+			newVertices.push_back(vertices[topRight * 2]);
+			newVertices.push_back(vertices[topRight * 2 + 1]);
 
-			newVertices.push_back(vertices[bottomLeft * 3]);
-			newVertices.push_back(vertices[bottomLeft * 3 + 1]);
-			newVertices.push_back(vertices[bottomLeft * 3 + 2]);
+			indicators.push_back(vertices[bottomLeft * 2]);
+			indicators.push_back(vertices[bottomLeft * 2 + 1]);
+			indicators.push_back(vertices[topLeft * 2]);
+			indicators.push_back(vertices[topLeft * 2 + 1]);
+
+			newVertices.push_back(vertices[topRight * 2]);
+			newVertices.push_back(vertices[topRight * 2 + 1]);
+
+			indicators.push_back(vertices[bottomRight * 2]);
+			indicators.push_back(vertices[bottomRight * 2 + 1]);
+			indicators.push_back(vertices[bottomLeft * 2]);
+			indicators.push_back(vertices[bottomLeft * 2 + 1]);
+
+			newVertices.push_back(vertices[bottomLeft * 2]);
+			newVertices.push_back(vertices[bottomLeft * 2 + 1]);
+
+			indicators.push_back(vertices[topRight * 2]);
+			indicators.push_back(vertices[topRight * 2 + 1]);
+			indicators.push_back(vertices[bottomRight * 2]);
+			indicators.push_back(vertices[bottomRight * 2 + 1]);
+
+			newVertices.push_back(vertices[bottomRight * 2]);
+			newVertices.push_back(vertices[bottomRight * 2 + 1]);
+
+			indicators.push_back(vertices[bottomLeft * 2]);
+			indicators.push_back(vertices[bottomLeft * 2 + 1]);
+			indicators.push_back(vertices[topRight * 2]);
+			indicators.push_back(vertices[topRight * 2 + 1]);
 		}
 	}
 
@@ -59,12 +85,17 @@ Water WaterGenerator::addWater(unsigned int pVertexCount, unsigned int pSize) {
 
 	auto tVbo = OpenGLResources::createVBO(&newVertices[0], newVertices.size() * sizeof(float));
 	tVbo->bind();
-	tVao->addVertexBuffer(0, 3);
+	tVao->addVertexBuffer(0, 2);
+	tVbo->unBind();
+
+	tVbo = OpenGLResources::createVBO(&indicators[0], indicators.size() * sizeof(float));
+	tVbo->bind();
+	tVao->addVertexBuffer(1, 4);
 	tVbo->unBind();
 
 	tVao->unBind();
 
 	delete[] vertices;
 
-	return Water(tVao, newVertices.size());
+	return Water(tVao, newVertices.size(), 0.0f);
 }

@@ -135,8 +135,14 @@
     <ClCompile Include="watergenerator.cpp">
       <Filter>Source Files\generators</Filter>
     </ClCompile>
+    <ClCompile Include="waterfbos.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
     <ClCompile Include="waterrenderer.cpp">
       <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Source Files\essentials</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="watergenerator.h">
       <Filter>Header Files\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="waterfbos.h">
+      <Filter>Header Files\renderer</Filter>
     </ClInclude>
     <ClInclude Include="waterrenderer.h">
       <Filter>Header Files\renderer</Filter>

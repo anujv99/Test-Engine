@@ -163,6 +163,7 @@
     <ClCompile Include="assetmanager.cpp" />
     <ClCompile Include="basicloader.cpp" />
     <ClCompile Include="basicmodelrenderer.cpp" />
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="cameramaster.cpp" />
     <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="vertexbuffer.cpp" />
     <ClCompile Include="watergenerator.cpp" />
+    <ClCompile Include="waterfbos.cpp" />
     <ClCompile Include="waterrenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +216,7 @@
     <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertexbuffer.h" />
     <ClInclude Include="watergenerator.h" />
+    <ClInclude Include="waterfbos.h" />
     <ClInclude Include="waterrenderer.h" />
   </ItemGroup>
   <ItemGroup>

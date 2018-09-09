@@ -6,20 +6,26 @@
 #include "terrainrenderer.h"
 #include "antialiasing.h"
 #include "waterrenderer.h"
+#include "cameramaster.h"
 
 class MasterRenderer {
 public:
 	MasterRenderer() {}
-	MasterRenderer(const unsigned int pWindowWidth, const unsigned int pWindowHeight);
-	void draw(Scene * pScene, const glm::mat4 &pViewMat);
+	MasterRenderer(const unsigned int pWindowWidth, const unsigned int pWindowHeight, CameraMaster * pCamera);
+	void draw(Scene * pScene);
 	void cleanUP();
 private:
 	void clear();
-private:
+	void processAndRenderWater(Scene * pScene, const glm::mat4 &pViewMat);
+	void setClipPlane(Shader * pShader, glm::vec4 pValue);
 	void drawAssets(Scene * pScene, const glm::mat4 &pViewMat);
+	void setSun(DirectionalLight * pSun, Shader * pShader);
+private:
+	CameraMaster * mCamera;
 	glm::mat4 mProjection;
 	BasicModelRenderer mBasicRenderer;
 	TerrainRenderer mTerrainRenderer;
 	WaterRenderer mWaterRenderer;
+	WaterFBOs mWaterFbos;
 };
 

@@ -10,6 +10,8 @@ uniform mat4 projection;
 uniform mat4 model;
 uniform mat4 view;
 
+uniform vec4 aClipPlane;
+
 out vec3 FragPos;  
 flat out vec3 Normal;
 flat out vec3 Color;
@@ -17,6 +19,7 @@ flat out vec3 Color;
 void main() {
 	Color = aColors;
 	vec4 worldPos = model * vec4(aPos, 1.0);
+	gl_ClipDistance[0] = dot(worldPos, aClipPlane);
 	FragPos = worldPos.xyz;
 	Normal = mat3(transpose(inverse(model))) * aNorm;
 	gl_Position = projection * view * worldPos;

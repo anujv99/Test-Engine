@@ -17,11 +17,9 @@ int Engine::init() {
 	//Use GL functions after this line
 
 	mInput.setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
-	mRenderer = MasterRenderer(WINDOW_WIDTH, WINDOW_HEIGHT);
 	mScenes = new SceneManager(&mAssetManager);
 	mCamera = CameraMaster(&mInput);
-
-	glfwSwapInterval(0);
+	mRenderer = MasterRenderer(WINDOW_WIDTH, WINDOW_HEIGHT, &mCamera);
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glEnable(GL_MULTISAMPLE);
@@ -36,7 +34,7 @@ void Engine::run() {
 		mInput.calculateIO();
 		mCamera.updateCamera();
 
-		mRenderer.draw(mScenes->getActiveScene(), mCamera.getViewMatrix());
+		mRenderer.draw(mScenes->getActiveScene());
 
 		mInput.updateKeys();
 		mDisplay->updateDisplay();
