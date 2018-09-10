@@ -4,7 +4,7 @@
 
 MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned int pWindowHeight, CameraMaster * pCamera) {
 	mCamera = pCamera;
-	mProjection = glm::perspective(glm::radians(45.0f), (float)pWindowWidth / (float)pWindowHeight, 0.1f, 100.0f);
+	mProjection = glm::perspective(glm::radians(45.0f), (float)pWindowWidth / (float)pWindowHeight, 0.1f, 1000.0f);
 	mBasicRenderer = BasicModelRenderer(mProjection);
 	mTerrainRenderer = TerrainRenderer(mProjection);
 	mWaterFbos = WaterFBOs(pWindowWidth, pWindowHeight);

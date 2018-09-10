@@ -16,7 +16,7 @@ private:
 	float interpolate(float a, float b, float blend);
 	float getInterpolatedNoise(float x, float y);
 private:
-	float AMPLiTUDE = 2.0f;
+	float AMPLiTUDE = 3.0f;
 	int OCTAVES = 3;
 	float ROUGHNESS = 0.3f;
 	int mSeed;

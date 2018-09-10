@@ -28,7 +28,7 @@ out vec3 Diffuse;
 const float height = 0.0;
 const float PI = 3.14159265358979323846;
 const float waveLength = 7.0;
-const float waveAmplitude = 0.5;
+const float waveAmplitude = 0.4;
 const float specularReflectivity = 0.8;
 const float shineDamper = 20.0;
 
@@ -88,7 +88,7 @@ void main() {
 	gl_Position = clipSpace;
 
 	vec3 toLightVector = -normalize(sun.mDirection);
-	Specular = calcSpecularLighting(toCamera, toLightVector, Normal);
+	Specular = calcSpecularLighting(toCamera, toLightVector, Normal) / 2.0;
 	Diffuse = calculateDiffuseLighting(toLightVector, Normal);
 }
 
@@ -101,7 +101,7 @@ const float edgeSoftness = 1;
 const float minBlueness = 0.2;
 const float maxBlueness = 0.75;
 const float murkyDepth = 20;
-const vec2 nearFarPlanes = vec2(0.1, 100.0);
+const vec2 nearFarPlanes = vec2(0.1, 1000.0);
 
 out vec4 FragColor;
 

@@ -106,7 +106,7 @@ glm::vec3 TerrainGenerator::calculateNormal(int x, int y, HeightsGenerator * pHe
 	float heightR = getHeight(x + 1, y, pHeightsGenerator);
 	float heightD = getHeight(x, y - 1, pHeightsGenerator);
 	float heightU = getHeight(x, y + 1, pHeightsGenerator);
-
+	
 	glm::vec3 sNorm(heightL - heightR, 2.0f, heightD - heightU);
 	sNorm = glm::normalize(sNorm);
 	return sNorm;
@@ -118,7 +118,7 @@ float TerrainGenerator::getHeight(int x, int y, HeightsGenerator * pHeightsGener
 
 glm::vec3 TerrainGenerator::generateColor(float height) {
 	static float part = 1.0f / (mTerrainColors.size() - 1);
-	static float amplitude = 15.0f;
+	static float amplitude = 30.0f;
 	float value = (height + amplitude) / (amplitude * 2);
 	value = std::clamp(value, 0.0f, 0.9999f);
 	int firstBiome = (int)std::floor(value / part);
