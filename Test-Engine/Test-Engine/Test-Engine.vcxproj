@@ -72,26 +72,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_64\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLFW_64\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,7 +104,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;lua5.3.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,7 +118,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;lua5.3.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,7 +136,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;lua5.3.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -154,7 +154,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;lua5.3.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -168,9 +168,11 @@
     <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="heightmaploader.cpp" />
     <ClCompile Include="heightsgenerator.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="lualoader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="masterrenderer.cpp" />
     <ClCompile Include="openglresources.cpp" />
@@ -199,9 +201,11 @@
     <ClInclude Include="directionallightgenerator.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="heightmaploader.h" />
     <ClInclude Include="heightsgenerator.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="lualoader.h" />
     <ClInclude Include="masterrenderer.h" />
     <ClInclude Include="openglresources.h" />
     <ClInclude Include="perlinnoise.h" />

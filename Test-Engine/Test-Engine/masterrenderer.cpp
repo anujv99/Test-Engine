@@ -56,6 +56,10 @@ void MasterRenderer::setSun(DirectionalLight * pSun, Shader * pShader) {
 
 void MasterRenderer::processAndRenderWater(Scene * pScene, const glm::mat4 & pViewMat) {
 
+	if (pScene->getWaters()->size() == 0) {
+		return;
+	}
+
 	auto tWater = pScene->getWaters()->at(0);
 
 	mWaterFbos.bindRefractionFrameBuffer();
@@ -81,4 +85,3 @@ void MasterRenderer::setClipPlane(Shader * pShader, glm::vec4 pValue) {
 	pShader->bind();
 	pShader->loadStoredUniform(pValue, UNIFORM_CLIP_PLANE);
 }
-

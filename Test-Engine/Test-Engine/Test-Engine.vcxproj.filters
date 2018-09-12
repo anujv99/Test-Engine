@@ -52,6 +52,12 @@
     <Filter Include="Header Files\generators">
       <UniqueIdentifier>{da0282c9-10a5-4a44-b8b5-b5d626c21853}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\script">
+      <UniqueIdentifier>{c907352f-3c71-4ba9-8f73-2d87a4c87cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\script">
+      <UniqueIdentifier>{e64bbd86-437c-4be0-a7dc-08fb39e6dd92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -144,6 +150,12 @@
     <ClCompile Include="camera.cpp">
       <Filter>Source Files\essentials</Filter>
     </ClCompile>
+    <ClCompile Include="heightmaploader.cpp">
+      <Filter>Source Files\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="lualoader.cpp">
+      <Filter>Source Files\script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -229,6 +241,12 @@
     </ClInclude>
     <ClInclude Include="waterrenderer.h">
       <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="heightmaploader.h">
+      <Filter>Header Files\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="lualoader.h">
+      <Filter>Header Files\script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

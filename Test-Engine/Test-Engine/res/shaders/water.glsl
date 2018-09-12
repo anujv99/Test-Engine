@@ -25,7 +25,7 @@ out vec3 toCamera;
 out vec3 Specular;
 out vec3 Diffuse;
 
-const float height = 0.0;
+const float height = -8.0;
 const float PI = 3.14159265358979323846;
 const float waveLength = 7.0;
 const float waveAmplitude = 0.4;

@@ -9,7 +9,7 @@ class AssetManager {
 public:
 	AssetManager();
 	Model * loadModel(std::string path);
-	Terrain * generateTerrain(unsigned int pVertexCount, unsigned int pSize);
+	Terrain * generateTerrain(unsigned int pVertexCount, unsigned int pSize, std::string pHmName);
 	DirectionalLight * createDirectionalLight(glm::vec3 pDirection, glm::vec3 pColor);
 	Water * addWater(unsigned int pVertexCount, unsigned int pSize);
 private:

@@ -8,13 +8,14 @@ std::vector<glm::vec3> mTerrainColors{
 	glm::vec3(200, 200, 210)
 };
 
-Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int pSize) {
+Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int pSize, std::string pHmName) {
 
 	for (unsigned int i = 0; i < mTerrainColors.size(); i++) {
 		mTerrainColors[i] = glm::normalize(mTerrainColors[i]);
 	}
 
-	HeightsGenerator tHeightGenerator(1254544);
+	//HeightsGenerator tHeightGenerator(1284);
+	HeightmapLoader tHmLoader(pHmName);
 
 	int count = pVertexCount * pVertexCount;
 	float * vertices = new float[count * 3];
@@ -26,7 +27,7 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	for (unsigned int i = 0; i < pVertexCount; i++) {
 		for (unsigned int j = 0; j < pVertexCount; j++) {
 			vertices[vertexPointer * 3] = (float)j / ((float)pVertexCount - 1) * pSize;
-			vertices[vertexPointer * 3 + 1] = getHeight(i, j, &tHeightGenerator);
+			vertices[vertexPointer * 3 + 1] = getHeight(i, j, &tHmLoader);
 			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
 
 			auto color = generateColor(vertices[vertexPointer * 3 + 1]);
@@ -35,7 +36,7 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 			colors[vertexPointer * 3 + 1] = color.y;
 			colors[vertexPointer * 3 + 2] = color.z;
 
-			auto tNorm = calculateNormal(i, j, &tHeightGenerator);
+			auto tNorm = calculateNormal(i, j, &tHmLoader);
 			normals[vertexPointer * 3] = tNorm.x;
 			normals[vertexPointer * 3 + 1] = tNorm.y;
 			normals[vertexPointer * 3 + 2] = tNorm.z;
@@ -96,7 +97,7 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	delete[] colors;
 	delete[] indices;
 
-	tHeightGenerator.cleanUP();
+	tHmLoader.cleanUP();
 
 	return Terrain(tVao, tIbo->getIndicesCount());
 }
@@ -114,6 +115,21 @@ glm::vec3 TerrainGenerator::calculateNormal(int x, int y, HeightsGenerator * pHe
 
 float TerrainGenerator::getHeight(int x, int y, HeightsGenerator * pHeightsGenerator) {
 	return pHeightsGenerator->generateHeight(x, y);
+}
+
+glm::vec3 TerrainGenerator::calculateNormal(int x, int y, HeightmapLoader * pHmLoader) {
+	float heightL = getHeight(x - 1, y, pHmLoader);
+	float heightR = getHeight(x + 1, y, pHmLoader);
+	float heightD = getHeight(x, y - 1, pHmLoader);
+	float heightU = getHeight(x, y + 1, pHmLoader);
+
+	glm::vec3 sNorm(heightL - heightR, 2.0f, heightD - heightU);
+	sNorm = glm::normalize(sNorm);
+	return sNorm;
+}
+
+float TerrainGenerator::getHeight(int x, int y, HeightmapLoader * pHmLoader) {
+	return pHmLoader->getHeight(x, y);
 }
 
 glm::vec3 TerrainGenerator::generateColor(float height) {

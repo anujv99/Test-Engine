@@ -23,6 +23,7 @@ bool Texture::loadTexture(std::string pImageName) {
 		return false;
 	}
 	stbi_image_free(data);
+	stbi_set_flip_vertically_on_load(false);
 	return true;
 }
 

@@ -12,8 +12,8 @@ Model * AssetManager::loadModel(std::string path) {
 	return &mModels.back();
 }
 
-Terrain * AssetManager::generateTerrain(unsigned int pVertexCount, unsigned int pSize) {
-	auto tTerrain = TerrainGenerator::createTerrain(pVertexCount, pSize);
+Terrain * AssetManager::generateTerrain(unsigned int pVertexCount, unsigned int pSize, std::string pHmName) {
+	auto tTerrain = TerrainGenerator::createTerrain(pVertexCount, pSize, pHmName);
 	mTerrains.push_back(tTerrain);
 	return &mTerrains.back();
 }
