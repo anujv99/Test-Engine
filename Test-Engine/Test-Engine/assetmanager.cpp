@@ -29,3 +29,9 @@ Water * AssetManager::addWater(unsigned int pVertexCount, unsigned int pSize) {
 	mWaters.push_back(tWater);
 	return &mWaters.back();
 }
+
+SkyBox * AssetManager::addSkybox(std::string pFileName, std::string pFileExtension) {
+	auto tSkybox = SkyboxLoader::loadSkybox(pFileName, pFileExtension);
+	mSkyboxes.push_back(tSkybox);
+	return &mSkyboxes.back();
+}

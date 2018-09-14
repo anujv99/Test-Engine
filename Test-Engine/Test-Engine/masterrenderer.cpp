@@ -9,6 +9,7 @@ MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned i
 	mTerrainRenderer = TerrainRenderer(mProjection);
 	mWaterFbos = WaterFBOs(pWindowWidth, pWindowHeight);
 	mWaterRenderer = WaterRenderer(mProjection);
+	mSkyboxRenderer = SkyboxRenderer(mProjection);
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1, 1, 1, 1);
 	glEnable(GL_CLIP_DISTANCE0);
@@ -46,6 +47,7 @@ void MasterRenderer::drawAssets(Scene * pScene, const glm::mat4 & pViewMat) {
 	setSun(pScene->getSun(), SceneManager::getTerrainShaer());
 	setSun(pScene->getSun(), SceneManager::getWaterShader());
 	processAndRenderWater(pScene, pViewMat);
+	mSkyboxRenderer.draw(pScene->getSkyBox(), pViewMat, SceneManager::getSkyboxShader());
 }
 
 void MasterRenderer::setSun(DirectionalLight * pSun, Shader * pShader) {

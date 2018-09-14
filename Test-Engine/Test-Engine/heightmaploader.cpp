@@ -11,6 +11,8 @@ HeightmapLoader::HeightmapLoader(std::string pFileName) {
 }
 
 float HeightmapLoader::getHeight(int x, int y) {
+	if (x < 0 || x > width || y < 0 || y > height)
+		return 0;
 	unsigned char * pixelOffset =  data + (x + height * y) * nrChannels;
 	float tHeight = (float)pixelOffset[0];
 	return (((tHeight / 255) * 2) - 1) * AMPLITUDE;

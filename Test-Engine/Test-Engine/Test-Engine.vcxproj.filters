@@ -58,6 +58,9 @@
     <Filter Include="Source Files\script">
       <UniqueIdentifier>{e64bbd86-437c-4be0-a7dc-08fb39e6dd92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\scripts">
+      <UniqueIdentifier>{41d2fe33-5c87-4f95-aefe-67ce84401399}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -156,6 +159,12 @@
     <ClCompile Include="lualoader.cpp">
       <Filter>Source Files\script</Filter>
     </ClCompile>
+    <ClCompile Include="skyboxloader.cpp">
+      <Filter>Source Files\resourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="skyboxrenderer.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -248,6 +257,12 @@
     <ClInclude Include="lualoader.h">
       <Filter>Header Files\script</Filter>
     </ClInclude>
+    <ClInclude Include="skyboxloader.h">
+      <Filter>Header Files\resourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="skyboxrenderer.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.glsl">
@@ -260,6 +275,12 @@
       <Filter>Resource Files\shaders</Filter>
     </None>
     <None Include="res\shaders\water.glsl">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="res\scripts\scenescript.lua">
+      <Filter>Resource Files\scripts</Filter>
+    </None>
+    <None Include="res\shaders\skybox.glsl">
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>

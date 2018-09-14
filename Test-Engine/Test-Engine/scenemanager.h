@@ -14,6 +14,7 @@ public:
 	static Shader * getBasicModelShader() { return mBasicModelShader; }
 	static Shader * getTerrainShaer() { return mTerrainShader; }
 	static Shader * getWaterShader() { return mWaterShader; }
+	static Shader * getSkyboxShader() { return mSkyboxShader; }
 private:
 	static AssetManager * mAssetManager;
 	static std::vector<Scene> mScenes;
@@ -22,6 +23,7 @@ private:
 	static Shader * mBasicModelShader;
 	static Shader * mTerrainShader;
 	static Shader * mWaterShader;
+	static Shader * mSkyboxShader;
 private:
 	static int loadTerrain(lua_State * L);
 	static int setSun(lua_State * L);

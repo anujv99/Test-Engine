@@ -1,6 +1,7 @@
 #include "Texture.h"
 
 Texture::Texture() {
+	mTexID = GL_TEXTURE_2D;
 	glGenTextures(1, &mTexID);
 	glBindTexture(GL_TEXTURE_2D, mTexID);
 
@@ -8,6 +9,12 @@ Texture::Texture() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+}
+
+Texture::Texture(GLenum pType) {
+	mTexType = pType;
+	glGenTextures(1, &mTexID);
+	glBindTexture(pType, mTexID);
 }
 
 bool Texture::loadTexture(std::string pImageName) {
@@ -28,15 +35,19 @@ bool Texture::loadTexture(std::string pImageName) {
 }
 
 void Texture::bind(unsigned int pTextureUnit) const {
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, pTextureUnit);
+	glActiveTexture(GL_TEXTURE0 + pTextureUnit);
+	glBindTexture(mTexType, mTexID);
 }
 
 void Texture::setAnisotropicFiltering() {
-	bind();
-	float tAmount = 4;
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, tAmount);
-	unBind();
+	if (mTexType == GL_TEXTURE_2D) {
+		bind();
+		float tAmount = 4;
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, tAmount);
+		unBind();
+	} else {
+		printf("TEXTURE::Texture type not GL_TEXTURE_2D\n");
+	}
 }
 
 void Texture::cleanUP() {

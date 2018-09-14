@@ -29,6 +29,12 @@ Texture * OpenGLResources::createTexture() {
 	return &mTextures.back();
 }
 
+Texture * OpenGLResources::createTexture(GLenum ptexType) {
+	auto tTexture = Texture(ptexType);
+	mTextures.push_back(tTexture);
+	return &mTextures.back();
+}
+
 void OpenGLResources::cleanUP() {
 	for (auto &sBuffer : mIbos) {
 		sBuffer.cleanUP();

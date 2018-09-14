@@ -181,6 +181,8 @@
     <ClCompile Include="scenemanager.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="shadermanager.cpp" />
+    <ClCompile Include="skyboxloader.cpp" />
+    <ClCompile Include="skyboxrenderer.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="terraingenerator.cpp" />
     <ClCompile Include="terrainrenderer.cpp" />
@@ -213,6 +215,8 @@
     <ClInclude Include="scenemanager.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="shadermanager.h" />
+    <ClInclude Include="skyboxloader.h" />
+    <ClInclude Include="skyboxrenderer.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="terraingenerator.h" />
     <ClInclude Include="terrainrenderer.h" />
@@ -224,8 +228,10 @@
     <ClInclude Include="waterrenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\scripts\scenescript.lua" />
     <None Include="res\shaders\basic.glsl" />
     <None Include="res\shaders\fboQuad.glsl" />
+    <None Include="res\shaders\skybox.glsl" />
     <None Include="res\shaders\terrain.glsl" />
     <None Include="res\shaders\water.glsl" />
   </ItemGroup>

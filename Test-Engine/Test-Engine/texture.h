@@ -8,12 +8,14 @@
 class Texture {
 public:
 	Texture();
+	Texture(GLenum pType);
 	bool loadTexture(std::string pImageName);
-	void bind() const { glBindTexture(GL_TEXTURE_2D, mTexID); }
+	void bind() const { glBindTexture(mTexType, mTexID); }
 	void bind(unsigned int pTextureUnit) const;
-	void unBind() const { glBindTexture(GL_TEXTURE_2D, 0); }
+	void unBind() const { glBindTexture(mTexType, 0); }
 	void setAnisotropicFiltering();
 	void cleanUP();
 private:
 	unsigned int mTexID;
+	GLenum mTexType;
 };

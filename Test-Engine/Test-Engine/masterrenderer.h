@@ -7,6 +7,7 @@
 #include "antialiasing.h"
 #include "waterrenderer.h"
 #include "cameramaster.h"
+#include "skyboxrenderer.h"
 
 class MasterRenderer {
 public:
@@ -27,5 +28,6 @@ private:
 	TerrainRenderer mTerrainRenderer;
 	WaterRenderer mWaterRenderer;
 	WaterFBOs mWaterFbos;
+	SkyboxRenderer mSkyboxRenderer;
 };
 

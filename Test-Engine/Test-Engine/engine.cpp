@@ -21,9 +21,6 @@ int Engine::init() {
 	mCamera = CameraMaster(&mInput);
 	mRenderer = MasterRenderer(WINDOW_WIDTH, WINDOW_HEIGHT, &mCamera);
 
-	glfwWindowHint(GLFW_SAMPLES, 4);
-	glEnable(GL_MULTISAMPLE);
-
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
 }

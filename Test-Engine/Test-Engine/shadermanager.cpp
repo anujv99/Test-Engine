@@ -1,10 +1,10 @@
 #include "shadermanager.h"
 
-std::map<SHADER_TYPES, Shader> ShaderManager::mAllShaders;
+std::map<SHADER_TYPES, Shader *> ShaderManager::mAllShaders;
 
 Shader * ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pShaderName) {
-	Shader tShader(pShaderName);
-	if (tShader.getStatus() != true) {
+	Shader * tShader = new Shader(pShaderName);
+	if (tShader->getStatus() != true) {
 		printf("SHADER_MANAGER::Unable to create shader %s\n", pShaderName.c_str());
 		return nullptr;
 	}
@@ -14,12 +14,13 @@ Shader * ShaderManager::addShader(SHADER_TYPES pShaderType, std::string pShaderN
 
 Shader * ShaderManager::getShader(SHADER_TYPES pShaderType) {
 	Shader * temp;
-	temp = &mAllShaders.at(pShaderType);
+	temp = mAllShaders.at(pShaderType);
 	return temp;
 }
 
 void ShaderManager::cleanUP() {
 	for (auto &sShader : mAllShaders) {
-		sShader.second.cleanUP();
+		sShader.second->cleanUP();
+		delete(sShader.second);
 	}
 }

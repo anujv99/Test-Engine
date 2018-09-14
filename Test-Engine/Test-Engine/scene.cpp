@@ -1,6 +1,8 @@
 #include "scene.h"
 
 Scene::Scene() {
+	mSkyBox = nullptr;
+	mSun = nullptr;
 }
 
 Scene::~Scene() {
@@ -35,5 +37,13 @@ void Scene::addWater(Water * pWater) {
 		mWaters.push_back(pWater);
 	} else {
 		printf("SCENE::Unable to add water to the scene\n");
+	}
+}
+
+void Scene::addSkybox(SkyBox * pSkyBox) {
+	if (pSkyBox != nullptr) {
+		mSkyBox = pSkyBox;
+	} else {
+		printf("SCENE::Unable to add skybox to the scene\n");
 	}
 }

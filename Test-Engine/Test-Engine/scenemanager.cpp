@@ -3,6 +3,7 @@
 Shader * SceneManager::mBasicModelShader;
 Shader * SceneManager::mTerrainShader;
 Shader * SceneManager::mWaterShader;
+Shader * SceneManager::mSkyboxShader;
 AssetManager * SceneManager::mAssetManager;
 std::vector<Scene> SceneManager::mScenes;
 Scene * SceneManager::mActiveScene;
@@ -15,6 +16,7 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 	mBasicModelShader = ShaderManager::addShader(SHADER_BASIC, "basic");
 	mTerrainShader = ShaderManager::addShader(SHADER_TERRAIN, "terrain");
 	mWaterShader = ShaderManager::addShader(SHADER_WATER, "water");
+	mSkyboxShader = ShaderManager::addShader(SHADER_SKYBOX, "skybox");
 
 	mWaterShader->bind();
 	mWaterShader->setInt(0, "waterReflection");
@@ -31,6 +33,7 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 
 	//mActiveScene->addModel(mAssetManager->loadModel("chair1"));
 	mActiveScene->addWater(mAssetManager->addWater(80, 200));
+	mActiveScene->addSkybox(mAssetManager->addSkybox("cloudy", ".png"));
 }
 
 void SceneManager::commitFunctions() {
