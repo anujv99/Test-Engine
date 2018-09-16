@@ -35,3 +35,9 @@ SkyBox * AssetManager::addSkybox(std::string pFileName, std::string pFileExtensi
 	mSkyboxes.push_back(tSkybox);
 	return &mSkyboxes.back();
 }
+
+Grass * AssetManager::generateGrass() {
+	auto tGrass = GrassGenerator::generateGrass();
+	mGrasses.push_back(tGrass);
+	return &mGrasses.back();
+}

@@ -3,6 +3,7 @@
 #define __MSAA__
 
 MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned int pWindowHeight, CameraMaster * pCamera) {
+	glEnable(GL_DEBUG_OUTPUT);
 	mCamera = pCamera;
 	mProjection = glm::perspective(glm::radians(45.0f), (float)pWindowWidth / (float)pWindowHeight, 0.1f, 1000.0f);
 	mBasicRenderer = BasicModelRenderer(mProjection);
@@ -10,6 +11,7 @@ MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned i
 	mWaterFbos = WaterFBOs(pWindowWidth, pWindowHeight);
 	mWaterRenderer = WaterRenderer(mProjection);
 	mSkyboxRenderer = SkyboxRenderer(mProjection);
+	mGrassRenderer = GrassRenderer(mProjection);
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1, 1, 1, 1);
 	glEnable(GL_CLIP_DISTANCE0);
@@ -42,6 +44,7 @@ void MasterRenderer::clear() {
 }
 
 void MasterRenderer::drawAssets(Scene * pScene, const glm::mat4 & pViewMat) {
+	mGrassRenderer.draw(pScene->getGrass(), pViewMat, SceneManager::getGrassShader());
 	mBasicRenderer.draw(pScene->getBasicModels(), pViewMat, SceneManager::getBasicModelShader());
 	mTerrainRenderer.draw(pScene->getTerrains(), pViewMat, SceneManager::getTerrainShaer());
 	setSun(pScene->getSun(), SceneManager::getTerrainShaer());

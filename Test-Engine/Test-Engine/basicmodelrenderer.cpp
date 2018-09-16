@@ -14,7 +14,7 @@ void BasicModelRenderer::draw(std::vector<Model*> * pModels, const glm::mat4 &pV
 		pShader->loadStoredUniform(tModelMat, UNIFORM_MATRIX_MODEL);
 
 		if (pModel->mDiffuseTex != nullptr) {
-			pModel->mDiffuseTex->bind();
+			pModel->mDiffuseTex->bind(0);
 		}
 
 		pModel->mVAO->bind();

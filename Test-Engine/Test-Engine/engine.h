@@ -17,5 +17,4 @@ private:
 	SceneManager * mScenes;
 	MasterRenderer mRenderer;
 	Display * mDisplay;
-	Input mInput;
 };

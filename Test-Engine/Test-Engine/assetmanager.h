@@ -5,6 +5,7 @@
 #include "directionallightgenerator.h"
 #include "watergenerator.h"
 #include "skyboxloader.h"
+#include "grassgenerator.h"
 
 class AssetManager {
 public:
@@ -14,11 +15,13 @@ public:
 	DirectionalLight * createDirectionalLight(glm::vec3 pDirection, glm::vec3 pColor);
 	Water * addWater(unsigned int pVertexCount, unsigned int pSize);
 	SkyBox * addSkybox(std::string pFileName, std::string pFileExtension);
+	Grass * generateGrass();
 private:
 	std::list<Model> mModels;
 	std::list<Terrain> mTerrains;
 	std::list<DirectionalLight> mDirectionalLights;
 	std::list<Water> mWaters;
 	std::list<SkyBox> mSkyboxes;
+	std::list<Grass> mGrasses;
 };
 

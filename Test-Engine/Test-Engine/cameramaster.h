@@ -5,7 +5,6 @@
 
 class CameraMaster {
 public:
-	CameraMaster(Input * pInput);
 	CameraMaster();
 	void updateCamera();
 public:
@@ -16,6 +15,5 @@ private:
 	float mCameraSpeed = 5.0f;;
 	Camera camera;
 	void checkForMovement();
-	Input * mInput;
 };
 

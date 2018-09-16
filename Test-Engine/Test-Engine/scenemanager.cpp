@@ -4,6 +4,7 @@ Shader * SceneManager::mBasicModelShader;
 Shader * SceneManager::mTerrainShader;
 Shader * SceneManager::mWaterShader;
 Shader * SceneManager::mSkyboxShader;
+Shader * SceneManager::mGrassShader;
 AssetManager * SceneManager::mAssetManager;
 std::vector<Scene> SceneManager::mScenes;
 Scene * SceneManager::mActiveScene;
@@ -17,6 +18,11 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 	mTerrainShader = ShaderManager::addShader(SHADER_TERRAIN, "terrain");
 	mWaterShader = ShaderManager::addShader(SHADER_WATER, "water");
 	mSkyboxShader = ShaderManager::addShader(SHADER_SKYBOX, "skybox");
+	mGrassShader = ShaderManager::addShader(SHADER_GRASS, "grass");
+
+	mBasicModelShader->bind();
+	mBasicModelShader->setInt(0, "tDiffuseTexture");
+	mBasicModelShader->unBind();
 
 	mWaterShader->bind();
 	mWaterShader->setInt(0, "waterReflection");
@@ -31,9 +37,10 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 	run();
 	stop();
 
-	//mActiveScene->addModel(mAssetManager->loadModel("chair1"));
+	mActiveScene->addModel(mAssetManager->loadModel("character1"));
 	mActiveScene->addWater(mAssetManager->addWater(80, 200));
 	mActiveScene->addSkybox(mAssetManager->addSkybox("cloudy", ".png"));
+	mActiveScene->addGrass(mAssetManager->generateGrass());
 }
 
 void SceneManager::commitFunctions() {

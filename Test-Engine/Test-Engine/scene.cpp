@@ -3,6 +3,7 @@
 Scene::Scene() {
 	mSkyBox = nullptr;
 	mSun = nullptr;
+	mGrass = nullptr;
 }
 
 Scene::~Scene() {
@@ -45,5 +46,13 @@ void Scene::addSkybox(SkyBox * pSkyBox) {
 		mSkyBox = pSkyBox;
 	} else {
 		printf("SCENE::Unable to add skybox to the scene\n");
+	}
+}
+
+void Scene::addGrass(Grass * pGrass) {
+	if (pGrass != nullptr) {
+		mGrass = pGrass;
+	} else {
+		printf("SCENE::Unable to add grass to the scene\n");
 	}
 }

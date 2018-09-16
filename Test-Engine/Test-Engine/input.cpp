@@ -2,9 +2,30 @@
 
 #include "antialiasing.h"
 
-void cursor_pos_callback(GLFWwindow * pWindow, double pxPos, double pyPos);
+
+double Input::mMouseXPos;
+double Input::mMouseYPos;
+bool Input::mIsMousePosChanged;
+double Input::mMouseXOffset;
+double Input::mMouseYOffset;
+bool Input::mIsMouseEnabled;
+bool Input::mIsWireframe;
+
+double Input::mLastMouseXPos;
+double Input::mLastMouseYPos;
+double Input::mLastFrameTime;
+double Input::mDeltaTime;
+GLFWwindow * Input::mWindow;
+
+bool Input::mKeyboardKeys[MAX_KEYS];
+unsigned int Input::mWidth, Input::mHeight;
+
+void cursor_pos_callback(GLFWwindow * pWindow, double pxPos, double pyPos) {
+	Input::setMousePos(pxPos, pyPos);
+}
 
 void Input::setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeight) {
+	mIsMouseEnabled = true;
 	mWindow = pWindow;
 	mWidth = pWidth;
 	mHeight = pHeight;
@@ -14,7 +35,7 @@ void Input::setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeigh
 	mLastMouseYPos = mMouseYPos;
 	mMouseXOffset = 0;
 	mMouseYOffset = 0;
-	glfwSetWindowUserPointer(mWindow, (void*)(this));
+
 	glfwSetCursorPosCallback(mWindow, cursor_pos_callback);
 
 	mDeltaTime = 0.0;
@@ -42,6 +63,11 @@ void Input::updateKeys() {
 	for (int i = 0; i < MAX_KEYS; i++) {
 		mKeyboardKeys[i] = isKeyDown(i);
 	}
+}
+
+void Input::setMousePos(double pX, double pY) {
+	mMouseXPos = pX;
+	mMouseYPos = pY;
 }
 
 void Input::calculateMouseData() {
@@ -80,8 +106,3 @@ void Input::checkWindowExitStatus() {
 		glfwSetWindowShouldClose(mWindow, GLFW_TRUE);
 }
 
-void cursor_pos_callback(GLFWwindow * pWindow, double pxPos, double pyPos) {
-	Input * tInput = (Input *)glfwGetWindowUserPointer(pWindow);
-	tInput->mMouseXPos = pxPos;
-	tInput->mMouseYPos = pyPos;
-}

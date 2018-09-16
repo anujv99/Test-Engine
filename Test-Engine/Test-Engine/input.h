@@ -7,40 +7,41 @@
 
 class Input {
 public:
-	void setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeight);
-	void calculateIO();
-	bool isKeyDown(int pKey);
-	bool isKeyPressed(int pKey);
-	void updateKeys();
+	static void setup(GLFWwindow * pWindow, unsigned int pWidth, unsigned int pHeight);
+	static void calculateIO();
+	static bool isKeyDown(int pKey);
+	static bool isKeyPressed(int pKey);
+	static void updateKeys();
 public:
-	bool isMousePosChanged() const { return mIsMousePosChanged; }
-	inline double getMouseXPos() const { return mMouseXPos; }
-	inline double getMouseYPos() const { return mMouseYPos; }
-	inline double getMouseXOffset() const { return mMouseXOffset; }
-	inline double getMouseYOffset() const { return mMouseYOffset; }
-	inline bool isMouseEnabled() const { return mIsMouseEnabled; }
-	inline double getDeltaTime() const { return mDeltaTime; }
+	static bool isMousePosChanged() { return mIsMousePosChanged; }
+	static inline double getMouseXPos() { return mMouseXPos; }
+	static inline double getMouseYPos() { return mMouseYPos; }
+	static inline double getMouseXOffset() { return mMouseXOffset; }
+	static inline double getMouseYOffset() { return mMouseYOffset; }
+	static inline bool isMouseEnabled() { return mIsMouseEnabled; }
+	static inline double getDeltaTime() { return mDeltaTime; }
+public:
+	static void setMousePos(double pX, double pY);
 private:
-	double mMouseXPos;
-	double mMouseYPos;
-	bool mIsMousePosChanged;
-	double mMouseXOffset;
-	double mMouseYOffset;
-	bool mIsMouseEnabled = true;
-	bool mIsWireframe = false;
+	static double mMouseXPos;
+	static double mMouseYPos;
+	static bool mIsMousePosChanged;
+	static double mMouseXOffset;
+	static double mMouseYOffset;
+	static bool mIsMouseEnabled;
+	static bool mIsWireframe;
 private:
-	double mLastMouseXPos;
-	double mLastMouseYPos;
+	static double mLastMouseXPos;
+	static double mLastMouseYPos;
 private:
-	double mLastFrameTime;
-	double mDeltaTime;
+	static double mLastFrameTime;
+	static double mDeltaTime;
 private:
-	GLFWwindow * mWindow;
-	bool mKeyboardKeys[MAX_KEYS];
-	unsigned int mWidth, mHeight;
-	friend void cursor_pos_callback(GLFWwindow * pWindow, double pxPos, double pyPos);
+	static GLFWwindow * mWindow;
+	static bool mKeyboardKeys[MAX_KEYS];
+	static unsigned int mWidth, mHeight;
 private:
-	void calculateMouseData();
-	void checkWindowExitStatus();
+	static void calculateMouseData();
+	static void checkWindowExitStatus();
 };
 

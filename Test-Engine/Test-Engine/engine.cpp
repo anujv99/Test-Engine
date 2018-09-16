@@ -16,10 +16,11 @@ int Engine::init() {
 
 	//Use GL functions after this line
 
-	mInput.setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
-	mScenes = new SceneManager(&mAssetManager);
-	mCamera = CameraMaster(&mInput);
+	Input::setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
+
+	mCamera = CameraMaster();
 	mRenderer = MasterRenderer(WINDOW_WIDTH, WINDOW_HEIGHT, &mCamera);
+	mScenes = new SceneManager(&mAssetManager);
 
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
@@ -28,12 +29,12 @@ int Engine::init() {
 void Engine::run() {
 	//Main Game Loop
 	while (!mDisplay->shouldClose()) {
-		mInput.calculateIO();
+		Input::calculateIO();
 		mCamera.updateCamera();
 
 		mRenderer.draw(mScenes->getActiveScene());
 
-		mInput.updateKeys();
+		Input::updateKeys();
 		mDisplay->updateDisplay();
 	}
 }

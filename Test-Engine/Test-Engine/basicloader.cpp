@@ -55,8 +55,11 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 	delete[] tIndices;
 
 	auto tFinalModel =  Model(tVao, tIbo->getIndicesCount());
-	auto tTex = OpenGLResources::createTexture();
+	auto tTex = OpenGLResources::createTexture(GL_TEXTURE_2D);
 	bool status = tTex->loadTexture("res/models/" + pFilePath + ".jpg");
+	if (!status) {
+		status = tTex->loadTexture("res/models/" + pFilePath + ".png");
+	}
 	if (!status) {
 		printf("LOADER::Texture for model : %s : not found\n", pFilePath.c_str());
 		tFinalModel.mDiffuseTex = nullptr;
@@ -65,7 +68,6 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 	}
 
 	printf("LOADER::Model loader : %s\n", pFilePath.c_str());
-
 	return tFinalModel;
 }
 

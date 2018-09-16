@@ -10,7 +10,7 @@ public:
 	Texture();
 	Texture(GLenum pType);
 	bool loadTexture(std::string pImageName);
-	void bind() const { glBindTexture(mTexType, mTexID); }
+	void bind() const { bind(0); }
 	void bind(unsigned int pTextureUnit) const;
 	void unBind() const { glBindTexture(mTexType, 0); }
 	void setAnisotropicFiltering();

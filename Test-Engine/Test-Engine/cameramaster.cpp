@@ -8,25 +8,21 @@ void CameraMaster::updateCamera() {
 
 void CameraMaster::checkForMovement() {
 
-	if (mInput->isKeyDown(GLFW_KEY_W)) {
-		camera.ProcessKeyboard(FORWARD, mCameraSpeed * (float)mInput->getDeltaTime());
+	if (Input::isKeyDown(GLFW_KEY_W)) {
+		camera.ProcessKeyboard(FORWARD, mCameraSpeed * (float)Input::getDeltaTime());
 	}
-	if (mInput->isKeyDown(GLFW_KEY_S)) {
-		camera.ProcessKeyboard(BACKWARD, mCameraSpeed * (float)mInput->getDeltaTime());
+	if (Input::isKeyDown(GLFW_KEY_S)) {
+		camera.ProcessKeyboard(BACKWARD, mCameraSpeed * (float)Input::getDeltaTime());
 	}
-	if (mInput->isKeyDown(GLFW_KEY_A)) {
-		camera.ProcessKeyboard(LEFT, mCameraSpeed * (float)mInput->getDeltaTime());
+	if (Input::isKeyDown(GLFW_KEY_A)) {
+		camera.ProcessKeyboard(LEFT, mCameraSpeed * (float)Input::getDeltaTime());
 	}
-	if (mInput->isKeyDown(GLFW_KEY_D)) {
-		camera.ProcessKeyboard(RIGHT, mCameraSpeed * (float)mInput->getDeltaTime());
-	}
-
-	if (!mInput->isMouseEnabled()) {
-		camera.ProcessMouseMovement((float)mInput->getMouseXOffset(), (float)mInput->getMouseYOffset());
+	if (Input::isKeyDown(GLFW_KEY_D)) {
+		camera.ProcessKeyboard(RIGHT, mCameraSpeed * (float)Input::getDeltaTime());
 	}
 
-}
+	if (!Input::isMouseEnabled()) {
+		camera.ProcessMouseMovement((float)Input::getMouseXOffset(), (float)Input::getMouseYOffset());
+	}
 
-CameraMaster::CameraMaster(Input * pInput) {
-	mInput = pInput;
 }

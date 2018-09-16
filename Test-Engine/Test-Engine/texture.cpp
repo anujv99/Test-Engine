@@ -18,12 +18,16 @@ Texture::Texture(GLenum pType) {
 }
 
 bool Texture::loadTexture(std::string pImageName) {
+	if (mTexType != GL_TEXTURE_2D) {
+		printf("TEXTURE::Texture type not GL_TEXTURE_2D\n");
+		return false;
+	}
 	bind();
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char *data = stbi_load(pImageName.c_str(), &width, &height, &nrChannels, 0);
+	unsigned char *data = stbi_load(pImageName.c_str(), &width, &height, &nrChannels, 4);
 	if (data) {
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 	} else {
 		printf("TEXTURE::Failed to load texture : %s\n", pImageName.c_str());

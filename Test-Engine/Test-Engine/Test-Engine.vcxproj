@@ -168,6 +168,8 @@
     <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="grassgenerator.cpp" />
+    <ClCompile Include="grassrenderer.cpp" />
     <ClCompile Include="heightmaploader.cpp" />
     <ClCompile Include="heightsgenerator.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
@@ -177,6 +179,7 @@
     <ClCompile Include="masterrenderer.cpp" />
     <ClCompile Include="openglresources.cpp" />
     <ClCompile Include="perlinnoise.cpp" />
+    <ClCompile Include="rendereressentials.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="scenemanager.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -203,6 +206,8 @@
     <ClInclude Include="directionallightgenerator.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="grassgenerator.h" />
+    <ClInclude Include="grassrenderer.h" />
     <ClInclude Include="heightmaploader.h" />
     <ClInclude Include="heightsgenerator.h" />
     <ClInclude Include="indexbuffer.h" />
@@ -211,6 +216,7 @@
     <ClInclude Include="masterrenderer.h" />
     <ClInclude Include="openglresources.h" />
     <ClInclude Include="perlinnoise.h" />
+    <ClInclude Include="rendereressentials.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scenemanager.h" />
     <ClInclude Include="shader.h" />
@@ -231,6 +237,7 @@
     <None Include="res\scripts\scenescript.lua" />
     <None Include="res\shaders\basic.glsl" />
     <None Include="res\shaders\fboQuad.glsl" />
+    <None Include="res\shaders\grass.glsl" />
     <None Include="res\shaders\skybox.glsl" />
     <None Include="res\shaders\terrain.glsl" />
     <None Include="res\shaders\water.glsl" />
