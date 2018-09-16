@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 
 void RendererEssentials::drawElements(unsigned int pVertexCount) {
-	glDrawElements(GL_TRIANGLES, pVertexCount, GL_FLOAT, 0);
+	glDrawElements(GL_TRIANGLES, pVertexCount, GL_UNSIGNED_INT, 0);
 }
 
 void RendererEssentials::drawArrays(unsigned int pVertexCount) {

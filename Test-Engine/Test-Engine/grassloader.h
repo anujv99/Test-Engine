@@ -5,15 +5,16 @@
 struct Grass {
 	VertexArray * mVAO;
 	unsigned int mVertexCount;
+	Texture * mTex;
 
 	Grass() :
-		mVAO(nullptr), mVertexCount(0) {}
-	Grass(VertexArray * pVAO, unsigned int pVertexCount) :
-		mVAO(pVAO), mVertexCount(pVertexCount) {}
+		mVAO(nullptr), mVertexCount(0), mTex(nullptr) {}
+	Grass(VertexArray * pVAO, unsigned int pVertexCount, Texture * pTex) :
+		mVAO(pVAO), mVertexCount(pVertexCount), mTex(pTex) {}
 
 };
 
-class GrassGenerator {
+class GrassLoader {
 public:
 	static Grass generateGrass();
 private:

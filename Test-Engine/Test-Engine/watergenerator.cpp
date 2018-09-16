@@ -97,5 +97,6 @@ Water WaterGenerator::addWater(unsigned int pVertexCount, unsigned int pSize) {
 
 	delete[] vertices;
 
-	return Water(tVao, newVertices.size(), 0.0f);
+	//Change Height
+	return Water(tVao, newVertices.size(), -8.0f);
 }

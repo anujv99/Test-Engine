@@ -165,14 +165,14 @@
     <ClCompile Include="skyboxrenderer.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="grassgenerator.cpp">
-      <Filter>Source Files\generators</Filter>
-    </ClCompile>
     <ClCompile Include="rendereressentials.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
     <ClCompile Include="grassrenderer.cpp">
       <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="grassloader.cpp">
+      <Filter>Source Files\generators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,18 +193,6 @@
     </ClInclude>
     <ClInclude Include="basicmodelrenderer.h">
       <Filter>Header Files\renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>Header Files\essentails</Filter>
-    </ClInclude>
-    <ClInclude Include="cameramaster.h">
-      <Filter>Header Files\essentails</Filter>
-    </ClInclude>
-    <ClInclude Include="display.h">
-      <Filter>Header Files\essentails</Filter>
-    </ClInclude>
-    <ClInclude Include="engine.h">
-      <Filter>Header Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
       <Filter>Header Files\essentails</Filter>
@@ -272,14 +260,26 @@
     <ClInclude Include="skyboxrenderer.h">
       <Filter>Header Files\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="grassgenerator.h">
-      <Filter>Header Files\generators</Filter>
-    </ClInclude>
     <ClInclude Include="rendereressentials.h">
       <Filter>Header Files\renderer</Filter>
     </ClInclude>
     <ClInclude Include="grassrenderer.h">
       <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="display.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="cameramaster.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files\essentails</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="grassloader.h">
+      <Filter>Header Files\generators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

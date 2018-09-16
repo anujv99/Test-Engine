@@ -7,7 +7,7 @@ uniform mat4 projection;
 uniform mat4 view;
 
 void main() {
-	gl_Position =  projection * view * vec4(aPos, 1);
+	gl_Position = projection * view * vec4(aPos, 1);
 }
 
 //#FRAGMENT
@@ -16,7 +16,7 @@ void main() {
 out vec4 FragColor;
 
 void main() {
-	FragColor = vec4(1.0);
+	FragColor = vec4(0.2, 0.8, 0.4, 1.0);
 }
 
 //#UNIFORMS

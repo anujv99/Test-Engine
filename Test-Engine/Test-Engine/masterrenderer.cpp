@@ -68,11 +68,11 @@ void MasterRenderer::processAndRenderWater(Scene * pScene, const glm::mat4 & pVi
 	auto tWater = pScene->getWaters()->at(0);
 
 	mWaterFbos.bindRefractionFrameBuffer();
-	setClipPlane(SceneManager::getTerrainShaer(), glm::vec4(0, -1, 0, tWater->mHeight + 0.5f));
+	setClipPlane(SceneManager::getTerrainShaer(), glm::vec4(0, -1, 0, tWater->mHeight));
 	mTerrainRenderer.draw(pScene->getTerrains(), pViewMat, SceneManager::getTerrainShaer());
 
 	mWaterFbos.bindReflectionFrameBuffer();
-	setClipPlane(SceneManager::getTerrainShaer(), glm::vec4(0, 1, 0, tWater->mHeight));
+	setClipPlane(SceneManager::getTerrainShaer(), glm::vec4(0, 1, 0, -tWater->mHeight));
 	mTerrainRenderer.draw(pScene->getTerrains(), mCamera->getInvertedViewMatrix(tWater->mHeight), SceneManager::getTerrainShaer());
 
 #ifdef __MSAA__

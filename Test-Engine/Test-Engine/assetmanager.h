@@ -5,7 +5,7 @@
 #include "directionallightgenerator.h"
 #include "watergenerator.h"
 #include "skyboxloader.h"
-#include "grassgenerator.h"
+#include "grassloader.h"
 
 class AssetManager {
 public:

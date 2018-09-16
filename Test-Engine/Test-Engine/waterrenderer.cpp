@@ -21,6 +21,7 @@ void WaterRenderer::draw(Water * pWater, const glm::mat4 &pViewMatrix, glm::vec3
 	pShader->loadStoredUniform(mProjection, UNIFORM_MATRIX_PROJECTION);
 	pShader->loadStoredUniform(glm::mat4(1.0f), UNIFORM_MATRIX_MODEL);
 	pShader->loadStoredUniform(pCameraPos, UNIFORM_CAMERA_POSITION);
+	pShader->loadStoredUniform(pWater->mHeight, UNIFORM_WATER_HEIGHT);
 
 	time += WAVE_SPEED;
 	pShader->setFloat(time, "waveTime");

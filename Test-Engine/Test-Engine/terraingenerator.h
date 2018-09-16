@@ -12,10 +12,13 @@
 
 struct Terrain {
 	VertexArray * mVAO;
-	unsigned  int mVertexCount;
+	unsigned int mVertexCount;
+	HeightmapLoader * mHeights;
+	unsigned int mVertices;
+	unsigned int mSize;
 
 	Terrain() :
-		mVAO(nullptr), mVertexCount(0) {}
+		mVAO(nullptr), mVertexCount(0){}
 
 	Terrain(VertexArray * pVAO, unsigned int pVertexCount) :
 		mVAO(pVAO), mVertexCount(pVertexCount) {}

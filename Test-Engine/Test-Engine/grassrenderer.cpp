@@ -1,5 +1,7 @@
 #include "grassrenderer.h"
 
+#include <GLFW/glfw3.h>
+
 GrassRenderer::GrassRenderer() {}
 
 GrassRenderer::GrassRenderer(glm::mat4 pProjection) {
@@ -17,6 +19,6 @@ void GrassRenderer::draw(Grass * pGrass, const glm::mat4 &pViewMatrix, Shader * 
 
 	pGrass->mVAO->bind();
 	enableVertexAttribArray(0);
-	drawPoints(pGrass->mVertexCount);
+	drawElements(pGrass->mVertexCount);
 }
 

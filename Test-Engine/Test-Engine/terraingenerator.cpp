@@ -15,6 +15,7 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	}
 
 	//HeightsGenerator tHeightGenerator(1284);
+	//HeightmapLoader * tHmLoader = new HeightmapLoader(pHmName);
 	HeightmapLoader tHmLoader(pHmName);
 
 	int count = pVertexCount * pVertexCount;
@@ -97,7 +98,10 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	delete[] colors;
 	delete[] indices;
 
-	tHmLoader.cleanUP();
+	/*auto terr =  Terrain(tVao, tIbo->getIndicesCount());
+	terr.mVertexCount = pVertexCount;
+	terr.mSize = pSize;*/
+	//terr.mHeights = tHmLoader;
 
 	return Terrain(tVao, tIbo->getIndicesCount());
 }

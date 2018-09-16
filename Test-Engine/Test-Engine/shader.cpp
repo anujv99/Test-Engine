@@ -56,6 +56,11 @@ void Shader::createShaders(std::ifstream * pInFile) {
 				tShaderStirng.clear();
 				tLine.clear();
 				tIsShader = true;
+			} else if ((tLine.find("GEOMETRY")) != std::string::npos) {
+				tShaderType = GL_GEOMETRY_SHADER;
+				tShaderStirng.clear();
+				tLine.clear();
+				tIsShader = true;
 			} else if ((tLine.find("FRAGMENT")) != std::string::npos) {
 				tShaderType = GL_FRAGMENT_SHADER;
 				tShaderStirng.clear();
@@ -75,6 +80,11 @@ void Shader::createShaders(std::ifstream * pInFile) {
 void Shader::createShaderProgram() {
 	mProgramID = glCreateProgram();
 	glAttachShader(mProgramID, mVertexShaderID);
+
+	if (mGeometryShader != -1) {
+		glAttachShader(mProgramID, mGeometryShader);
+	}
+
 	glAttachShader(mProgramID, mFragmentShaderID);
 	glLinkProgram(mProgramID);
 
@@ -101,6 +111,7 @@ void Shader::loadUniforms() {
 	mUniformLocations[UNIFORM_SUN_COLOR] = getUniformLocation("sun.mColor");
 	mUniformLocations[UNIFORM_CLIP_PLANE] = getUniformLocation("aClipPlane");
 	mUniformLocations[UNIFORM_CAMERA_POSITION] = getUniformLocation("cameraPos");
+	mUniformLocations[UNIFORM_WATER_HEIGHT] = getUniformLocation("height");
 	unBind();
 }
 
@@ -114,6 +125,10 @@ void Shader::loadStoredUniform(glm::vec4 pValue, UNIFORM_LOCATIONS pLocation) {
 
 void Shader::loadStoredUniform(glm::vec3 pValue, UNIFORM_LOCATIONS pLocation) {
 	glUniform3f(mUniformLocations[pLocation], pValue.x, pValue.y, pValue.z);
+}
+
+void Shader::loadStoredUniform(float pValue, UNIFORM_LOCATIONS pLocation) {
+	glUniform1f(mUniformLocations[pLocation], pValue);
 }
 
 void Shader::compileShader(std::string pShaderString, GLenum pShaderType) {
@@ -133,6 +148,8 @@ void Shader::compileShader(std::string pShaderString, GLenum pShaderType) {
 	}
 	if (pShaderType == GL_VERTEX_SHADER) {
 		mVertexShaderID = tShaderID;
+	} else if (pShaderType == GL_GEOMETRY_SHADER) {
+		mGeometryShader = tShaderID;
 	} else if (pShaderType == GL_FRAGMENT_SHADER) {
 		mFragmentShaderID = tShaderID;
 	}

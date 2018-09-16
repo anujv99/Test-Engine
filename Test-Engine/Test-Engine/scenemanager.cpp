@@ -56,8 +56,8 @@ int SceneManager::loadTerrain(lua_State * L) {
 		std::cout << "LUA::Invalid arguments passed!" << std::endl;
 		return -1;
 	}
-	tVCount = lua_tointeger(L, 1);
-	tSize = lua_tointeger(L, 2);
+	tVCount = (int)lua_tointeger(L, 1);
+	tSize = (int)lua_tointeger(L, 2);
 	tHmName = lua_tostring(L, 3);
 	mActiveScene->addTerrain(mAssetManager->generateTerrain(tVCount, tSize, tHmName));
 	return 0;
@@ -71,7 +71,7 @@ int SceneManager::setSun(lua_State * L) {
 	}
 	float tData[6];
 	for (unsigned int i = 1; i <= 6; i++) {
-		tData[i - 1] = lua_tointeger(L, i);
+		tData[i - 1] = (float)lua_tonumber(L, i);
 	}
 	glm::vec3 tDir(tData[0], tData[1], tData[2]);
 	glm::vec3 tColor(tData[3], tData[4], tData[5]);
