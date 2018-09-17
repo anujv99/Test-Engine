@@ -12,7 +12,7 @@ public:
 	inline glm::mat4 getInvertedViewMatrix(float pHeight) { return camera.getInvertexViewMatrix(pHeight); }
 	inline glm::vec3 getCameraPos() { return camera.Position; }
 private:
-	float mCameraSpeed = 5.0f;;
+	float mCameraSpeed = 15.0f;;
 	Camera camera;
 	void checkForMovement();
 };

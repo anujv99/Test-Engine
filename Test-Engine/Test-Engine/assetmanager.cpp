@@ -12,8 +12,8 @@ Model * AssetManager::loadModel(std::string path) {
 	return &mModels.back();
 }
 
-Terrain * AssetManager::generateTerrain(unsigned int pVertexCount, unsigned int pSize, std::string pHmName) {
-	auto tTerrain = TerrainGenerator::createTerrain(pVertexCount, pSize, pHmName);
+Terrain * AssetManager::generateTerrain(unsigned int pVertexCount, unsigned int pSize, float pAmplitude, std::string pHmName, std::string pTex) {
+	auto tTerrain = TerrainGenerator::createTerrain(pVertexCount, pSize, pAmplitude, pHmName, pTex);
 	mTerrains.push_back(tTerrain);
 	return &mTerrains.back();
 }
@@ -34,10 +34,4 @@ SkyBox * AssetManager::addSkybox(std::string pFileName, std::string pFileExtensi
 	auto tSkybox = SkyboxLoader::loadSkybox(pFileName, pFileExtension);
 	mSkyboxes.push_back(tSkybox);
 	return &mSkyboxes.back();
-}
-
-Grass * AssetManager::generateGrass() {
-	auto tGrass = GrassLoader::generateGrass();
-	mGrasses.push_back(tGrass);
-	return &mGrasses.back();
 }

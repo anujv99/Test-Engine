@@ -37,10 +37,9 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 	run();
 	stop();
 
-	mActiveScene->addModel(mAssetManager->loadModel("character1"));
-	mActiveScene->addWater(mAssetManager->addWater(80, 200));
+	mActiveScene->addModel(mAssetManager->loadModel("tree/tree1"));
+	mActiveScene->addWater(mAssetManager->addWater(100, 512));
 	mActiveScene->addSkybox(mAssetManager->addSkybox("cloudy", ".png"));
-	mActiveScene->addGrass(mAssetManager->generateGrass());
 }
 
 void SceneManager::commitFunctions() {
@@ -51,15 +50,18 @@ void SceneManager::commitFunctions() {
 int SceneManager::loadTerrain(lua_State * L) {
 	int argc = lua_gettop(L);
 	unsigned int tVCount, tSize;
-	std::string tHmName;
-	if (argc != 3) {
+	float tAmplitude;
+	std::string tHmName, tTexName;
+	if (argc != 5) {
 		std::cout << "LUA::Invalid arguments passed!" << std::endl;
 		return -1;
 	}
 	tVCount = (int)lua_tointeger(L, 1);
 	tSize = (int)lua_tointeger(L, 2);
-	tHmName = lua_tostring(L, 3);
-	mActiveScene->addTerrain(mAssetManager->generateTerrain(tVCount, tSize, tHmName));
+	tAmplitude = (float)lua_tonumber(L, 3);
+	tHmName = lua_tostring(L, 4);
+	tTexName = lua_tostring(L, 5);
+	mActiveScene->addTerrain(mAssetManager->generateTerrain(tVCount, tSize, tAmplitude, tHmName, tTexName));
 	return 0;
 }
 

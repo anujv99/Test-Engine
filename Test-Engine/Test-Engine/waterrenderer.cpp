@@ -1,5 +1,7 @@
 #include "waterrenderer.h"
 
+#include "input.h"
+
 WaterRenderer::WaterRenderer() {
 }
 
@@ -23,7 +25,7 @@ void WaterRenderer::draw(Water * pWater, const glm::mat4 &pViewMatrix, glm::vec3
 	pShader->loadStoredUniform(pCameraPos, UNIFORM_CAMERA_POSITION);
 	pShader->loadStoredUniform(pWater->mHeight, UNIFORM_WATER_HEIGHT);
 
-	time += WAVE_SPEED;
+	time += WAVE_SPEED * (float)Input::getDeltaTime();
 	pShader->setFloat(time, "waveTime");
 
 	pWater->mVAO->bind();

@@ -168,8 +168,6 @@
     <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
-    <ClCompile Include="grassloader.cpp" />
-    <ClCompile Include="grassrenderer.cpp" />
     <ClCompile Include="heightmaploader.cpp" />
     <ClCompile Include="heightsgenerator.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
@@ -206,8 +204,6 @@
     <ClInclude Include="directionallightgenerator.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
-    <ClInclude Include="grassloader.h" />
-    <ClInclude Include="grassrenderer.h" />
     <ClInclude Include="heightmaploader.h" />
     <ClInclude Include="heightsgenerator.h" />
     <ClInclude Include="indexbuffer.h" />

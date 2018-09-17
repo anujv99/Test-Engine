@@ -1,6 +1,7 @@
 #include "heightmaploader.h"
 
-HeightmapLoader::HeightmapLoader(std::string pFileName) {
+HeightmapLoader::HeightmapLoader(std::string pFileName, float pAmplitude) {
+	AMPLITUDE = pAmplitude;
 	pFileName = "res/textures/" + pFileName;
 	stbi_set_flip_vertically_on_load(true);
 	data = stbi_load(pFileName.c_str(), &width, &height, &nrChannels, 3);

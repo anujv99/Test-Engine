@@ -11,10 +11,10 @@ MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned i
 	mWaterFbos = WaterFBOs(pWindowWidth, pWindowHeight);
 	mWaterRenderer = WaterRenderer(mProjection);
 	mSkyboxRenderer = SkyboxRenderer(mProjection);
-	mGrassRenderer = GrassRenderer(mProjection);
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1, 1, 1, 1);
 	glEnable(GL_CLIP_DISTANCE0);
+	glfwSwapInterval(0);
 
 #ifdef __MSAA__
 	AntiAliasing::start(pWindowWidth, pWindowHeight);
@@ -44,7 +44,6 @@ void MasterRenderer::clear() {
 }
 
 void MasterRenderer::drawAssets(Scene * pScene, const glm::mat4 & pViewMat) {
-	mGrassRenderer.draw(pScene->getGrass(), pViewMat, SceneManager::getGrassShader());
 	mBasicRenderer.draw(pScene->getBasicModels(), pViewMat, SceneManager::getBasicModelShader());
 	mTerrainRenderer.draw(pScene->getTerrains(), pViewMat, SceneManager::getTerrainShaer());
 	setSun(pScene->getSun(), SceneManager::getTerrainShaer());

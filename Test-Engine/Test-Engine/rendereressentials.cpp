@@ -19,3 +19,8 @@ void RendererEssentials::enableVertexAttribArray(unsigned int pSize) {
 		glEnableVertexAttribArray(i);
 	}
 }
+
+void RendererEssentials::drawInstancedElemets(unsigned int pVertexCount, unsigned int pInstances) {
+	glDrawElementsInstanced(GL_TRIANGLES, pVertexCount, GL_UNSIGNED_INT, 0, pInstances);
+}
+

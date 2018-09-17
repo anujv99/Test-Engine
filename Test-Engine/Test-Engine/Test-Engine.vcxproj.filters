@@ -168,12 +168,6 @@
     <ClCompile Include="rendereressentials.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="grassrenderer.cpp">
-      <Filter>Source Files\renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="grassloader.cpp">
-      <Filter>Source Files\generators</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -263,9 +257,6 @@
     <ClInclude Include="rendereressentials.h">
       <Filter>Header Files\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="grassrenderer.h">
-      <Filter>Header Files\renderer</Filter>
-    </ClInclude>
     <ClInclude Include="display.h">
       <Filter>Header Files\essentails</Filter>
     </ClInclude>
@@ -277,9 +268,6 @@
     </ClInclude>
     <ClInclude Include="engine.h">
       <Filter>Header Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="grassloader.h">
-      <Filter>Header Files\generators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,11 +12,13 @@ uniform mat4 view;
 
 uniform vec4 aClipPlane;
 
-out vec3 FragPos;  
+out vec3 FragPos;
+out vec2 TexCoords;
 flat out vec3 Normal;
 flat out vec3 Color;
 
 void main() {
+	TexCoords = aTexCoords;
 	Color = aColors;
 	vec4 worldPos = model * vec4(aPos, 1.0);
 	gl_ClipDistance[0] = dot(worldPos, aClipPlane);
@@ -38,9 +40,11 @@ struct DirLight {
 uniform DirLight sun;
 
 in vec3 FragPos;
+in vec2 TexCoords;
 flat in vec3 Normal;
 flat in vec3 Color;
 
+uniform sampler2D terrainTex;
 
 void main() {
 
@@ -51,7 +55,11 @@ void main() {
 	float diff = max(dot(norm, lightDir), 0.1);
 	vec3 diffuse = diff * sun.mColor;
 
-	FragColor = vec4(Color * diffuse, 1.0);
+	//vec4 texColor = texture(terrainTex, TexCoords);
+	vec4 texColor = vec4(111, 215, 0, 0);
+	texColor = normalize(texColor);
+
+	FragColor = vec4(texColor.xyz * diffuse, 1.0);
 }
 
 //#UNIFORMS

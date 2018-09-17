@@ -8,7 +8,6 @@
 #include "waterrenderer.h"
 #include "cameramaster.h"
 #include "skyboxrenderer.h"
-#include "grassrenderer.h"
 
 class MasterRenderer {
 public:
@@ -30,6 +29,5 @@ private:
 	WaterRenderer mWaterRenderer;
 	WaterFBOs mWaterFbos;
 	SkyboxRenderer mSkyboxRenderer;
-	GrassRenderer mGrassRenderer;
 };
 

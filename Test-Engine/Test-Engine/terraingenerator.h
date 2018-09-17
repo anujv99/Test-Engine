@@ -12,21 +12,19 @@
 
 struct Terrain {
 	VertexArray * mVAO;
+	Texture * mTexture;
 	unsigned int mVertexCount;
-	HeightmapLoader * mHeights;
-	unsigned int mVertices;
-	unsigned int mSize;
 
 	Terrain() :
-		mVAO(nullptr), mVertexCount(0){}
+		mVAO(nullptr), mVertexCount(0), mTexture(nullptr){}
 
-	Terrain(VertexArray * pVAO, unsigned int pVertexCount) :
-		mVAO(pVAO), mVertexCount(pVertexCount) {}
+	Terrain(VertexArray * pVAO, Texture * pTex, unsigned int pVertexCount) :
+		mVAO(pVAO), mVertexCount(pVertexCount), mTexture(pTex) {}
 };
 
 class TerrainGenerator {
 public:
-	static Terrain createTerrain(unsigned int pVertexCount, unsigned int pSize, std::string pHmName);
+	static Terrain createTerrain(unsigned int pVertexCount, unsigned int pSize, float pAmplitude, std::string pHmName, std::string pTexture);
 private:
 	static glm::vec3 calculateNormal(int x, int y, HeightsGenerator * pHeightsGenerator);
 	static float getHeight(int x, int y, HeightsGenerator * pHeightsGenerator);

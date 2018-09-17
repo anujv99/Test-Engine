@@ -2,6 +2,10 @@
 
 #define PI 3.141592653589793
 
+float HeightsGenerator::AMPLiTUDE = 6.0f;
+int HeightsGenerator::OCTAVES = 3;
+float HeightsGenerator::ROUGHNESS = 0.3f;
+
 HeightsGenerator::HeightsGenerator(int pSeed) {
 	mSeed = pSeed;
 	mPerlinNoise = new FastNoise(pSeed);
@@ -51,4 +55,3 @@ float HeightsGenerator::getInterpolatedNoise(float x, float y) {
 	float i2 = interpolate(v3, v4, fracX);
 	return interpolate(i1, i2, fracY);
 }
-

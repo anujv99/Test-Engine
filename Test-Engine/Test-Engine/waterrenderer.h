@@ -15,7 +15,7 @@ private:
 	void connectTexture(unsigned int pIndex, unsigned int pTexID);
 	void resetTexture();
 private:
-	float WAVE_SPEED = 0.004f;
+	float WAVE_SPEED = 0.2f;
 	float time = 0.0f;
 };
 

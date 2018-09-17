@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "perlinnoise.h"
+#include "lualoader.h"
 
 class HeightsGenerator {
 public:
@@ -16,9 +17,9 @@ private:
 	float interpolate(float a, float b, float blend);
 	float getInterpolatedNoise(float x, float y);
 private:
-	float AMPLiTUDE = 3.0f;
-	int OCTAVES = 3;
-	float ROUGHNESS = 0.3f;
+	static float AMPLiTUDE;
+	static int OCTAVES;
+	static float ROUGHNESS;
 	int mSeed;
 	FastNoise * mPerlinNoise;
 };

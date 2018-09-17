@@ -5,7 +5,7 @@
 
 class HeightmapLoader {
 public:
-	HeightmapLoader(std::string pFileName);
+	HeightmapLoader(std::string pFileName, float pAmplitude);
 	float getHeight(int x, int y);
 	void cleanUP();
 private:

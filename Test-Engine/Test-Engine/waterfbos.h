@@ -30,11 +30,11 @@ private:
 	unsigned int mReflectionTexture, mRefractionTexture;
 	unsigned int mReflectionDepthRBO, mRefractionDepthTexture;
 
-	int REFLECTION_WIDTH = 1280/2;
-	int REFLECTION_HEIGHT = 720/2;
+	int REFLECTION_WIDTH = 1280/4;
+	int REFLECTION_HEIGHT = 720/4;
 
-	int REFRACTION_WIDTH = 1280;
-	int REFRACTION_HEIGHT = 720;
+	int REFRACTION_WIDTH = 1280/2;
+	int REFRACTION_HEIGHT = 720/2;
 	int WINDOW_WIDTH;
 	int WINDOW_HEIGHT;
 };

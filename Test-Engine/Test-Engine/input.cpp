@@ -1,6 +1,7 @@
 #include "input.h"
 
 #include "antialiasing.h"
+#include <iostream>
 
 
 double Input::mMouseXPos;
