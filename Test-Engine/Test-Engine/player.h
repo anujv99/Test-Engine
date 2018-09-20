@@ -3,8 +3,6 @@
 #include "terraingenerator.h"
 #include "basicloader.h"
 
-#define GRAVITY 1.0f / 60.0f
-
 class Player {
 public:
 	static void setPlayer(Model * pPlayer, Terrain * pTerrain);

@@ -1,11 +1,11 @@
 #include "engine.h"
 
 #include "collisioninterface.h"
+#include <thread>
+#include <chrono>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
-
-#define GRAVITY 10.0f
 
 int Engine::init() {
 	mDisplay = new Display(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -22,12 +22,13 @@ int Engine::init() {
 
 	Input::setup(mDisplay->getWindow(), WINDOW_WIDTH, WINDOW_HEIGHT);
 	CollisionInterface::createCollisionWorld();
-	CollisionInterface::setGravity(glm::vec3(0, -GRAVITY, 0));
+	CollisionInterface::setGravity(glm::vec3(0, -9.8f, 0));
 
 	mCamera = CameraMaster();
 	mRenderer = MasterRenderer(WINDOW_WIDTH, WINDOW_HEIGHT, &mCamera);
 	mScenes = new SceneManager(&mAssetManager);
 
+	glfwSwapInterval(0);
 
 	printf("ENGINE::Initialized successfully!\n");
 	return 0;
@@ -35,25 +36,27 @@ int Engine::init() {
 
 void Engine::run() {
 	//Main Game Loop
+
+	CollisionInterface::start();
 	while (!mDisplay->shouldClose()) {
 		Input::calculateIO();
 		mCamera.updateCamera();
 
-		CollisionInterface::update();
 		Player::update();
 		mRenderer.draw(mScenes->getActiveScene());
 
 		Input::updateKeys();
 		mDisplay->updateDisplay();
 	}
+	CollisionInterface::stop();
 }
 
 void Engine::destroy() {
-	CollisionInterface::cleanUP();
 	mAssetManager.cleanUP();
 	mRenderer.cleanUP();
 	OpenGLResources::cleanUP();
 	ShaderManager::cleanUP();
+	CollisionInterface::cleanUP();
 	delete(mScenes);
 	delete(mDisplay);
 }

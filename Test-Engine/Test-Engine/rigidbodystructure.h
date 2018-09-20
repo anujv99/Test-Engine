@@ -10,7 +10,6 @@ public:
 	void setPosition(glm::vec3 pPos);
 	glm::vec3 getPosition() { return glm::vec3(mModelMatrix[3]); }
 	void accelerate(glm::vec3 pDir);
-	void accelerate(glm::vec3 pDir, glm::vec3 pAcceleration);
 	glm::vec3 * getVelocity() { return &mVelocity; }
 	void update();
 	~RigidBodyStructure();

@@ -6,6 +6,15 @@ void CollisionInterface::createCollisionWorld() {
 	mWorld = new CollisionWorld;
 }
 
+void CollisionInterface::cleanUP() {
+	while (true) {
+		if (mWorld->getThreadStatus() == true) {
+			delete(mWorld);
+			break;
+		}
+	}
+}
+
 void CollisionInterface::setGravity(glm::vec3 pGravity) {
 	if (mWorld != nullptr) {
 		mWorld->setGravity(pGravity);

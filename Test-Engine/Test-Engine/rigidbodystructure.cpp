@@ -2,6 +2,7 @@
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include "input.h"
+#include <iostream>
 
 RigidBodyStructure::RigidBodyStructure(glm::vec3 pPosition, glm::vec3 pRotation, float pScale, float pMass) {
 	mModelMatrix = glm::mat4(1.0f);
@@ -62,28 +63,10 @@ void RigidBodyStructure::accelerate(glm::vec3 pDir) {
 	} else if (mVelocity.x < -mMaxVelocity) {
 		mVelocity.x = -mMaxVelocity;
 	}
-	if (mVelocity.y > mMaxVelocity) {
-		mVelocity.y = mMaxVelocity;
-	} else if (mVelocity.y < -mMaxVelocity) {
-		mVelocity.y = -mMaxVelocity;
-	}
 	if (mVelocity.z > mMaxVelocity) {
 		mVelocity.z = mMaxVelocity;
 	} else if (mVelocity.z < -mMaxVelocity) {
 		mVelocity.z = -mMaxVelocity;
-	}
-}
-
-void RigidBodyStructure::accelerate(glm::vec3 pDir, glm::vec3 pAcceleration) {
-	mVelocity += pDir * pAcceleration;
-	if (mVelocity.x > mMaxVelocity) {
-		mVelocity.x = mMaxVelocity;
-	}
-	if (mVelocity.y > mMaxVelocity) {
-		mVelocity.y = mMaxVelocity;
-	}
-	if (mVelocity.z > mMaxVelocity) {
-		mVelocity.z = mMaxVelocity;
 	}
 }
 
