@@ -1,5 +1,7 @@
 #include "scenemanager.h"
 
+#include "collisioninterface.h"
+
 Shader * SceneManager::mBasicModelShader;
 Shader * SceneManager::mTerrainShader;
 Shader * SceneManager::mWaterShader;
@@ -37,9 +39,14 @@ SceneManager::SceneManager(AssetManager * pAssetManager) {
 	run();
 	stop();
 
-	mActiveScene->addModel(mAssetManager->loadModel("tree/tree1"));
-	mActiveScene->addWater(mAssetManager->addWater(100, 512));
+	auto tModel = mAssetManager->loadModel("tree/tree1");
+	mActiveScene->addModel(tModel);
+	Player::setPlayer(tModel, mActiveScene->getTerrains()->at(0));
+	//mActiveScene->addWater(mAssetManager->addWater(100, 512));
 	mActiveScene->addSkybox(mAssetManager->addSkybox("cloudy", ".png"));
+
+	CollisionInterface::addTerrainCollidor(mActiveScene->getTerrains()->at(0));
+
 }
 
 void SceneManager::commitFunctions() {

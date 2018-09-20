@@ -35,3 +35,9 @@ SkyBox * AssetManager::addSkybox(std::string pFileName, std::string pFileExtensi
 	mSkyboxes.push_back(tSkybox);
 	return &mSkyboxes.back();
 }
+
+void AssetManager::cleanUP() {
+	for (auto terr : mTerrains) {
+		terr.clean();
+	}
+}

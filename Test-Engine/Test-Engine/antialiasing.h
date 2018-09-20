@@ -1,7 +1,5 @@
 #pragma once
 
-#include "shadermanager.h"
-
 class AntiAliasing {
 public:
 	static bool start(unsigned int pWindowWidth, unsigned int pWindowHeight);
@@ -19,7 +17,6 @@ private:
 	static void createQuad();
 	static unsigned int mVAO, mVBO1, mVBO2;
 	static unsigned int mVertexCount;
-	static Shader * mFboShader;
 private:
 	static bool * mIsWireframe;
 };

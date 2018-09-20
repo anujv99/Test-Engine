@@ -1,14 +1,14 @@
 #pragma once
 
 #include "vertexbuffer.h"
-#include "indexbuffer.h"
+
 class VertexArray {
 public:
 	VertexArray();
 	void cleanUP();
 	void addVertexBuffer(unsigned int pVertexAttribIndex, unsigned int pCoordinateSize);
-	inline void bind() const { glBindVertexArray(mVertexArrayID); }
-	inline void unBind() const { glBindVertexArray(0); }
+	void bind() const;
+	void unBind() const;
 private:
 	unsigned int mVertexArrayID;
 };

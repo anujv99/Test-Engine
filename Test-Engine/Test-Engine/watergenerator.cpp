@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 
+#include <glad/glad.h>
+
 Water WaterGenerator::addWater(unsigned int pVertexCount, unsigned int pSize) {
 	glProvokingVertex(GL_FIRST_VERTEX_CONVENTION);
 	float count = (float)pVertexCount * (float)pVertexCount;

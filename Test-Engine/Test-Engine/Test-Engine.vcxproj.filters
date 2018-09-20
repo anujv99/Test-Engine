@@ -61,6 +61,18 @@
     <Filter Include="Resource Files\scripts">
       <UniqueIdentifier>{41d2fe33-5c87-4f95-aefe-67ce84401399}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\collision">
+      <UniqueIdentifier>{c2ae050f-0ccc-4cb5-981e-389b23b88579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\collision">
+      <UniqueIdentifier>{07ec1ad0-da5e-4d36-ae30-c5bdb611e092}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{9901dee6-4599-42c3-9f2c-e001c5e593ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{aa94644e-2d49-40f0-a038-fad09e35a8d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -168,6 +180,21 @@
     <ClCompile Include="rendereressentials.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
+    <ClCompile Include="collisionworld.cpp">
+      <Filter>Source Files\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="collisioninterface.cpp">
+      <Filter>Source Files\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="rigidbodystructure.cpp">
+      <Filter>Source Files\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="terraincollision.cpp">
+      <Filter>Source Files\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetmanager.h">
@@ -268,6 +295,21 @@
     </ClInclude>
     <ClInclude Include="engine.h">
       <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="collisionworld.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="collisioninterface.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="rigidbodystructure.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="terraincollision.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

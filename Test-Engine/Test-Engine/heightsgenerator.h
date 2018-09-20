@@ -1,10 +1,6 @@
 #pragma once
 
-#include <cstdlib>
-#include <iostream>
-
 #include "perlinnoise.h"
-#include "lualoader.h"
 
 class HeightsGenerator {
 public:

@@ -165,6 +165,8 @@
     <ClCompile Include="basicmodelrenderer.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cameramaster.cpp" />
+    <ClCompile Include="collisioninterface.cpp" />
+    <ClCompile Include="collisionworld.cpp" />
     <ClCompile Include="directionallightgenerator.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="engine.cpp" />
@@ -177,7 +179,9 @@
     <ClCompile Include="masterrenderer.cpp" />
     <ClCompile Include="openglresources.cpp" />
     <ClCompile Include="perlinnoise.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="rendereressentials.cpp" />
+    <ClCompile Include="rigidbodystructure.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="scenemanager.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -185,6 +189,7 @@
     <ClCompile Include="skyboxloader.cpp" />
     <ClCompile Include="skyboxrenderer.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="terraincollision.cpp" />
     <ClCompile Include="terraingenerator.cpp" />
     <ClCompile Include="terrainrenderer.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -201,6 +206,8 @@
     <ClInclude Include="basicmodelrenderer.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="cameramaster.h" />
+    <ClInclude Include="collisioninterface.h" />
+    <ClInclude Include="collisionworld.h" />
     <ClInclude Include="directionallightgenerator.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="engine.h" />
@@ -212,7 +219,9 @@
     <ClInclude Include="masterrenderer.h" />
     <ClInclude Include="openglresources.h" />
     <ClInclude Include="perlinnoise.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="rendereressentials.h" />
+    <ClInclude Include="rigidbodystructure.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scenemanager.h" />
     <ClInclude Include="shader.h" />
@@ -220,6 +229,7 @@
     <ClInclude Include="skyboxloader.h" />
     <ClInclude Include="skyboxrenderer.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="terraincollision.h" />
     <ClInclude Include="terraingenerator.h" />
     <ClInclude Include="terrainrenderer.h" />
     <ClInclude Include="texture.h" />

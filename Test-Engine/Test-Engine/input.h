@@ -1,6 +1,5 @@
 #pragma once
 
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #define MAX_KEYS 1000
@@ -37,7 +36,6 @@ private:
 	static double mLastFrameTime;
 	static double mDeltaTime;
 private:
-	static GLFWwindow * mWindow;
 	static bool mKeyboardKeys[MAX_KEYS];
 	static unsigned int mWidth, mHeight;
 private:

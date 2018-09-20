@@ -4,6 +4,7 @@
 #include "assetmanager.h"
 #include "shadermanager.h"
 #include "lualoader.h"
+#include "player.h"
 
 class SceneManager : LuaLoader {
 public:

@@ -1,8 +1,5 @@
 #include "antialiasing.h"
-
-#include <glad/glad.h>
-#include <iostream>
-
+#include "shadermanager.h"
 #define SAMPLES 4
 
 unsigned int AntiAliasing::mMultisampledFBO;
@@ -16,7 +13,7 @@ unsigned int AntiAliasing::mVAO;
 unsigned int AntiAliasing::mVBO1;
 unsigned int AntiAliasing::mVBO2;
 unsigned int AntiAliasing::mVertexCount;
-Shader * AntiAliasing::mFboShader;
+Shader * mFboShader = nullptr;
 bool * AntiAliasing::mIsWireframe;
 
 bool AntiAliasing::start(unsigned int pWindowWidth, unsigned int pWindowHeight) {

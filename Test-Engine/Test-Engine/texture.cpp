@@ -1,5 +1,8 @@
 #include "Texture.h"
 
+#include <glad/glad.h>
+#include "stb_image.h"
+
 Texture::Texture() {
 	mTexID = GL_TEXTURE_2D;
 	glGenTextures(1, &mTexID);
@@ -11,7 +14,7 @@ Texture::Texture() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 }
 
-Texture::Texture(GLenum pType) {
+Texture::Texture(int pType) {
 	mTexType = pType;
 	glGenTextures(1, &mTexID);
 	glBindTexture(pType, mTexID);
@@ -41,6 +44,10 @@ bool Texture::loadTexture(std::string pImageName) {
 void Texture::bind(unsigned int pTextureUnit) const {
 	glActiveTexture(GL_TEXTURE0 + pTextureUnit);
 	glBindTexture(mTexType, mTexID);
+}
+
+void Texture::unBind() const {
+	glBindTexture(mTexType, 0);
 }
 
 void Texture::setAnisotropicFiltering() {

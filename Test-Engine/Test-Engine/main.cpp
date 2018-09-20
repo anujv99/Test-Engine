@@ -1,8 +1,7 @@
+#include <vld.h>
 #include "engine.h"
 
 #define PAUSE system("PAUSE")
-
-#define __MSAA__
 
 int main() {
 	Engine engine;

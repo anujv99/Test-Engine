@@ -3,7 +3,6 @@
 #include "antialiasing.h"
 #include <iostream>
 
-
 double Input::mMouseXPos;
 double Input::mMouseYPos;
 bool Input::mIsMousePosChanged;
@@ -16,7 +15,7 @@ double Input::mLastMouseXPos;
 double Input::mLastMouseYPos;
 double Input::mLastFrameTime;
 double Input::mDeltaTime;
-GLFWwindow * Input::mWindow;
+GLFWwindow * mWindow = nullptr;
 
 bool Input::mKeyboardKeys[MAX_KEYS];
 unsigned int Input::mWidth, Input::mHeight;

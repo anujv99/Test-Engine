@@ -14,6 +14,7 @@ public:
 	DirectionalLight * createDirectionalLight(glm::vec3 pDirection, glm::vec3 pColor);
 	Water * addWater(unsigned int pVertexCount, unsigned int pSize);
 	SkyBox * addSkybox(std::string pFileName, std::string pFileExtension);
+	void cleanUP();
 private:
 	std::list<Model> mModels;
 	std::list<Terrain> mTerrains;

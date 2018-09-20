@@ -1,5 +1,7 @@
 #include "cameramaster.h"
 
+#include "input.h"
+
 CameraMaster::CameraMaster() {}
 
 void CameraMaster::updateCamera() {

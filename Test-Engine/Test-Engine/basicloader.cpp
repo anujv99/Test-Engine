@@ -1,5 +1,11 @@
 #include "basicloader.h"
 
+#include <fstream>
+#include <ios>
+#include <vector>
+
+#include <glad/glad.h>
+
 Model BasicLoader::loadModel(std::string pFilePath) {
 	std::ifstream tInFile("res/models/" + pFilePath + ".toxic", std::ios::in | std::ios::binary);
 	if (!tInFile) {
@@ -66,6 +72,8 @@ Model BasicLoader::loadModel(std::string pFilePath) {
 	} else {
 		tFinalModel.mDiffuseTex = tTex;
 	}
+
+	tFinalModel.mRigidBody = CollisionInterface::createRigidBody();
 
 	printf("LOADER::Model loader : %s\n", pFilePath.c_str());
 	return tFinalModel;

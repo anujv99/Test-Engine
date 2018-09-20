@@ -1,5 +1,7 @@
 #include "display.h"
 
+#include <iostream>
+
 Display::Display(unsigned int pWidth, unsigned int pHeight) {
 	if (!glfwInit()) {
 		mStatus = false;

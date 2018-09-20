@@ -1,28 +1,20 @@
 #pragma once
 
 #include <string>
-#include <fstream>
-#include <ios>
-#include <vector>
-
 #include <GLM/glm.hpp>
-
-#include "stb_image.h"
 #include "openglresources.h"
+#include "collisioninterface.h"
 
 struct Model {
 	VertexArray * mVAO;
 	Texture * mDiffuseTex;
 	unsigned int mVertexCount;
-	glm::vec3 mPosition;
-	glm::vec3 mRotation;
-	float mScale;
+	RigidBodyStructure * mRigidBody;
+
 	Model() :
-		mVAO(nullptr), mVertexCount(-1) {
-	}
+		mVAO(nullptr), mVertexCount(-1) {}
 	Model(VertexArray * pVAO, unsigned int pVertexCount) :
-		mVAO(pVAO), mVertexCount(pVertexCount), mPosition(glm::vec3(0)), mRotation(glm::vec3(0)), mScale(1) {
-	}
+		mVAO(pVAO), mVertexCount(pVertexCount), mRigidBody(nullptr) {}
 };
 
 class BasicLoader {

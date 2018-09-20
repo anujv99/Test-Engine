@@ -29,7 +29,7 @@ Texture * OpenGLResources::createTexture() {
 	return &mTextures.back();
 }
 
-Texture * OpenGLResources::createTexture(GLenum ptexType) {
+Texture * OpenGLResources::createTexture(int ptexType) {
 	auto tTexture = Texture(ptexType);
 	mTextures.push_back(tTexture);
 	return &mTextures.back();

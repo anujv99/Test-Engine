@@ -2,6 +2,8 @@
 
 #define __MSAA__
 
+#include <GLFW/glfw3.h>
+
 MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned int pWindowHeight, CameraMaster * pCamera) {
 	glEnable(GL_DEBUG_OUTPUT);
 	mCamera = pCamera;
@@ -14,7 +16,6 @@ MasterRenderer::MasterRenderer(const unsigned int pWindowWidth, const unsigned i
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1, 1, 1, 1);
 	glEnable(GL_CLIP_DISTANCE0);
-	glfwSwapInterval(0);
 
 #ifdef __MSAA__
 	AntiAliasing::start(pWindowWidth, pWindowHeight);

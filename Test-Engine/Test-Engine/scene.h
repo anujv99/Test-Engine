@@ -2,6 +2,8 @@
 
 #include "assetmanager.h"
 
+#include <vector>
+
 class Scene {
 public:
 	Scene();

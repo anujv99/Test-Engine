@@ -2,6 +2,10 @@
 
 #include <iostream>
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "stb_image.h"
+
 SkyBox SkyboxLoader::loadSkybox(const std::string & pFileName, const std::string & pFileExtension) {
 	auto tTexID = OpenGLResources::createTexture(GL_TEXTURE_CUBE_MAP);
 	tTexID->bind();

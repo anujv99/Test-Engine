@@ -1,7 +1,6 @@
 #pragma once
 
 #include "camera.h"
-#include "input.h"
 
 class CameraMaster {
 public:

@@ -1,5 +1,8 @@
 #include "heightsgenerator.h"
 
+#include <cstdlib>
+#include <iostream>
+
 #define PI 3.141592653589793
 
 float HeightsGenerator::AMPLiTUDE = 6.0f;

@@ -1,4 +1,5 @@
 #include "heightmaploader.h"
+#include "stb_image.h"
 
 HeightmapLoader::HeightmapLoader(std::string pFileName, float pAmplitude) {
 	AMPLITUDE = pAmplitude;

@@ -4,6 +4,7 @@
 
 #include "vertexarray.h"
 #include "Texture.h"
+#include "indexbuffer.h"
 
 class OpenGLResources {
 public:
@@ -13,7 +14,7 @@ public:
 	static VertexBuffer * createVBO(const float * pData, unsigned int pSize);
 	static IndexBuffer * createIBO(const int * pData, unsigned int pSize);
 	static Texture * createTexture();
-	static Texture * createTexture(GLenum ptexType);
+	static Texture * createTexture(int ptexType);
 private:
 	static std::list<VertexArray> mVaos;
 	static std::list<VertexBuffer> mVbos;

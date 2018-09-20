@@ -1,5 +1,10 @@
 #include "terraingenerator.h"
 
+#include <vector>
+#include <algorithm>
+
+#include <glad/glad.h>
+
 std::vector<glm::vec3> mTerrainColors{ 
 	glm::vec3(210 / 255, 178 / 255, 99 / 255),
 	glm::vec3(135, 184, 82),
@@ -21,6 +26,11 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 	//HeightsGenerator tHeightGenerator(1284);
 	HeightmapLoader tHmLoader(pHmName, pAmplitude);
 
+	float ** heights = new float*[pVertexCount];
+	for (unsigned int i = 0; i < pVertexCount; i++) {
+		heights[i] = new float[pVertexCount];
+	}
+
 	int count = pVertexCount * pVertexCount;
 	float * vertices = new float[count * 3];
 	float * normals = new float[count * 3];
@@ -33,6 +43,8 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 			vertices[vertexPointer * 3] = (float)j / ((float)pVertexCount - 1) * pSize;
 			vertices[vertexPointer * 3 + 1] = getHeight(i, j, &tHmLoader);
 			vertices[vertexPointer * 3 + 2] = (float)i / ((float)pVertexCount - 1) * pSize;
+
+			heights[j][i] = vertices[vertexPointer * 3 + 1];
 
 			if (!isTexturePresent) {
 				auto color = generateColor(vertices[vertexPointer * 3 + 1]);
@@ -104,8 +116,6 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 
 	tVao->unBind();
 
-	
-
 	delete[] vertices;
 	delete[] normals;
 	delete[] textureCoords;
@@ -114,7 +124,11 @@ Terrain TerrainGenerator::createTerrain(unsigned int pVertexCount, unsigned int 
 
 	tHmLoader.cleanUP();
 
-	return Terrain(tVao, tTex, tIbo->getIndicesCount());
+	auto terr = Terrain(tVao, tTex, tIbo->getIndicesCount());
+	terr.setHeight(heights);
+	terr.mDivisions = pVertexCount;
+	terr.mSize = pSize;
+	return terr;
 }
 
 glm::vec3 TerrainGenerator::calculateNormal(int x, int y, HeightsGenerator * pHeightsGenerator) {
