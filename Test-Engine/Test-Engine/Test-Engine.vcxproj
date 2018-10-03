@@ -72,26 +72,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\x86\includes;C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\x86\libs;C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\x86\includes;C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\x86\libs;C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\x86\includes;C:\dev\x86\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\x86\libs;C:\dev\x86\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\output\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\</IntDir>
-    <IncludePath>C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dev\x86\includes;C:\dev\Lua5.3.5\includes;C:\dev\PerlinNoise;C:\dev\GLM\includes;C:\dev\GLAD\include;C:\dev\GLFW_32\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dev\x86\libs;C:\dev\Lua5.3.5\libs;C:\dev\GLFW_32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -158,7 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\dev\x86\src\glad.c" />
     <ClCompile Include="antialiasing.cpp" />
     <ClCompile Include="assetmanager.cpp" />
     <ClCompile Include="basicloader.cpp" />

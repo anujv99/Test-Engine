@@ -1,4 +1,3 @@
-#include <vld.h>
 #include "engine.h"
 
 #define PAUSE system("PAUSE")

@@ -129,9 +129,6 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source Files\opengl_objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\..\dev\GLAD\src\glad.c">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
     <ClCompile Include="openglresources.cpp">
       <Filter>Source Files\opengl_objects</Filter>
     </ClCompile>
@@ -194,6 +191,9 @@
     </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\dev\x86\src\glad.c">
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
